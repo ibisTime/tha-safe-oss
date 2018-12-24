@@ -15,7 +15,7 @@ import { listWrapper } from 'common/js/build-list';
 
 @listWrapper(
   state => ({
-    ...state.securityMenu,
+    ...state.wrc20AddressQuery,
     parentCode: state.menu.subMenuCode
   }),
   { setTableData, clearSearchParam, doFetching, setBtnList,

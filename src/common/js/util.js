@@ -2,6 +2,7 @@ import cookies from 'browser-cookies';
 import { message, Modal } from 'antd';
 import moment from 'moment';
 import { PIC_PREFIX, DATE_FORMAT, MONTH_FORMAT, DATETIME_FORMAT } from './config';
+import './lib/BigDecimal';
 
 /**
  * 保存用户登录信息
@@ -156,48 +157,52 @@ export function dateTimeFormat(date) {
   return formatDate(date, 'yyyy-MM-dd hh:mm:ss');
 }
 
+export function isNumeric(value) {
+    return !isNaN(Number(value));
+}
+
 /**
  * 金额格式转化
  * @param money
  * @param format
  */
-export function moneyFormat(money, format, isRe = true) {
-  var flag = true;
-  if (isUndefined(money) || isNaN(money)) {
-    return '';
-  }
-  if (money < 0) {
-    money = -1 * money;
-    flag = false;
-  }
-  if (isUndefined(format) || typeof format === 'object') {
-    format = 2;
-  }
-  // 钱除以1000并保留两位小数
-  money = (money / 1000).toString();
-  var reg = new RegExp('(\\.\\d{' + format + '})\\d+', 'ig');
-  money = money.replace(reg, '$1');
-  money = parseFloat(money).toFixed(format);
-  // 千分位转化
-  if (isRe) {
-    var re = /\d{1,3}(?=(\d{3})+$)/g;
-    money = money.replace(/^(\d+)((\.\d+)?)$/, (s, s1, s2) => (s1.replace(re, '$&,') + s2));
-  }
-  if (!flag) {
-    money = '-' + money;
-  }
-  return money;
-}
+// export function moneyFormat(money, format, isRe = true) {
+//   var flag = true;
+//   if (isUndefined(money) || isNaN(money)) {
+//     return '';
+//   }
+//   if (money < 0) {
+//     money = -1 * money;
+//     flag = false;
+//   }
+//   if (isUndefined(format) || typeof format === 'object') {
+//     format = 2;
+//   }
+//   // 钱除以1000并保留两位小数
+//   money = (money / 1000).toString();
+//   var reg = new RegExp('(\\.\\d{' + format + '})\\d+', 'ig');
+//   money = money.replace(reg, '$1');
+//   money = parseFloat(money).toFixed(format);
+//   // 千分位转化
+//   if (isRe) {
+//     var re = /\d{1,3}(?=(\d{3})+$)/g;
+//     money = money.replace(/^(\d+)((\.\d+)?)$/, (s, s1, s2) => (s1.replace(re, '$&,') + s2));
+//   }
+//   if (!flag) {
+//     money = '-' + money;
+//   }
+//   return money;
+// }
 
 /**
  * 把格式化金额转成接口需要的
  * @param money
  * @param rate
  */
-export function moneyParse(money, rate = 1000) {
-  let m0 = ('' + money).replace(/,/g, '');
-  return m0 === '' ? '' : (+m0 * rate).toFixed(0);
-}
+// export function moneyParse(money, rate = 1000) {
+//   let m0 = ('' + money).replace(/,/g, '');
+//   return m0 === '' ? '' : (+m0 * rate).toFixed(0);
+// }
 
 /**
  * 把格式化金额去掉逗号
@@ -276,11 +281,11 @@ export function showErrMsg(msg, time = 2) {
   showMsg(msg, 'error', time);
 }
 
-export function showConfirm({okType = 'primary', onOk, onCancel}) {
-  Modal.confirm({
+export function showConfirm({okType = 'primary', title, content, onOk, onCancel}) {
+  let config = {
     okType,
-    title: '您确定要删除该条记录吗?',
-    content: '删除记录后无法还原',
+    title: title,
+    content: content,
     okText: '确定',
     cancelText: '取消',
     onOk() {
@@ -289,16 +294,20 @@ export function showConfirm({okType = 'primary', onOk, onCancel}) {
     onCancel() {
       onCancel && onCancel();
     }
-  });
+  };
+  Modal.confirm(config);
 }
 
 export function showDelConfirm({onOk, onCancel}) {
   showConfirm({
     okType: 'danger',
+    title: '您确定要删除该条记录吗?',
+    content: '删除记录后无法还原',
     onOk,
     onCancel
   });
 }
+
 export function convertCurrency(currencyDigits) {
   if (isUndefined(currencyDigits)) {
     return '';
@@ -698,4 +707,132 @@ export function getKindByUrl() {
       // if (location.origin === 'http://47.99.147.67:2909') {
       return 'B';
     }
+}
+
+/**
+ * 金额格式转化 根据币种格式化金额
+ * @param money
+ * @param format
+ * @param coin 币种
+ * @param isRe 是否去零
+ */
+export function moneyFormat(money, format, coin, isRe = false) {
+    let unit = coin && getCoinData()[coin] ? getCoinUnit(coin) : '1000';
+    let flag = false;// 是否是负数
+    if (isNaN(money)) {
+        return '-';
+    } else {
+        Number(money);
+    }
+    if (money < 0) {
+        money = -1 * money;
+        flag = true;
+    }
+    // 默认格式为2位小数
+    if (isUndefined(format) || typeof format === 'object') {
+        format = 2;
+    }
+    if (coin) {
+        format = 8;
+    }
+    // 金额格式化 金额除以unit并保留format位小数
+    money = new BigDecimal(money.toString());
+    money = money.divide(new BigDecimal(unit), format, MathContext.ROUND_DOWN).toString();
+
+    // 是否去零
+    if (isRe) {
+        var re = /\d{1,3}(?=(\d{3})+$)/g;
+        money = money.replace(/^(\d+)((\.\d+)?)$/, (s, s1, s2) => (s1.replace(re, '$&,') + s2));
+    }
+    if (flag) {
+        money = '-' + money;
+    }
+    return money;
+}
+
+/**
+ * 金额放大 根据币种的单位把金额放大
+ * @param money
+ * @param format
+ * @param coin 币种
+ */
+export function moneyParse(money, rate, coin) {
+    let unit = coin && getCoinData()[coin] ? getCoinUnit(coin) : '1000';
+    console.log(getCoinUnit(coin), unit);
+    if (isUndefined(money)) {
+        return '-';
+    }
+    rate = rate || new BigDecimal(unit);
+    money = new BigDecimal(money);
+    money = money.multiply(rate).toString();
+    return money;
+}
+
+/**
+ * 金额减法
+ * @param s1
+ * @param s2
+ * @param coin 币种
+ * @param coinList 币种列表
+ */
+export function moneyFormatSubtract(s1, s2, format, coin, coinList) {
+    if (!isNumeric(s1) || !isNumeric(s2)) {
+        return '-';
+    }
+    let num1 = new BigDecimal(Number(s1).toString());
+    let num2 = new BigDecimal(Number(s2).toString());
+    return moneyFormat(num1.subtract(num2).toString(), format, coin, coinList);
+}
+
+/**
+ * 金额乘法
+ * @param s1
+ * @param s2
+ * @param coin 币种
+ * @param coinList 币种列表
+ */
+export function moneyFormatMultiply(s1, s2, format, coin, coinList) {
+    if (!isNumeric(s1) || !isNumeric(s2)) {
+        return '-';
+    }
+    let num1 = new BigDecimal(Number(s1).toString());
+    let num2 = new BigDecimal(Number(s2).toString());
+    return moneyFormat(num1.multiply(num2).toString(), format, coin, coinList);
+}
+
+/**
+ * 获取币种Data
+ * return {
+ *  'BTC': {
+ *      'coin': 'BTC',
+ *      'unit': '1e8',
+ *      'name': '比特币',
+ *      'type': '0',
+ *      'status': '0'
+ *  }
+ *}
+ */
+export function getCoinData() {
+    return JSON.parse(sessionStorage.getItem('coinData'));
+}
+
+/**
+ * 获取币种列表
+ * return [{
+ *      key: 'BTC',
+ *      value: '比特币'
+ *}]
+ */
+export function getCoinList() {
+    return JSON.parse(sessionStorage.getItem('coinList'));
+}
+
+// 获取币种unit
+export function getCoinUnit(coin) {
+    if (!coin) {
+        console.log('coin不能为空');
+        return;
+    }
+    var unit = getCoinData()[coin].unit;
+    return unit;
 }

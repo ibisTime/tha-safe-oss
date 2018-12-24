@@ -22,6 +22,7 @@ import CMonth from 'component/cMonth/cMonth';
 import CCitySelect from 'component/cCitySelect/cCitySelect';
 import CCheckbox from 'component/cCheckbox/cCheckbox';
 import CTreeSelect from 'component/cTreeSelect/cTreeSelect';
+import {getCoinList} from 'api/coin';
 
 const { Item: FormItem } = Form;
 const { Panel } = Collapse;
@@ -56,6 +57,9 @@ export default class DetailComp extends React.Component {
     this.fetchList = [];
     this.first = true;
     this.textareas = {};
+  }
+  componentDidMount() {
+    this.setCoinDate();
   }
   initPageData() {
     let firstFn = [];
@@ -196,6 +200,31 @@ export default class DetailComp extends React.Component {
     this.first = false;
     return pageComp;
   }
+
+  // 获取已有币种， 保存币种列表
+  setCoinDate = () => {
+      getCoinList().then(data => {
+          let coinList = [];
+          let coinData = {};
+          data.map(d => {
+              coinData[d.symbol] = {
+                  'coin': d.symbol,
+                  'unit': '1e' + d.unit,
+                  'name': d.cname,
+                  'type': d.type,
+                  'status': d.status
+              };
+              coinList.push({
+                  key: d.symbol,
+                  value: d.cname
+              });
+          });
+
+          window.sessionStorage.setItem('coinData', JSON.stringify(coinData));
+          window.sessionStorage.setItem('coinList', JSON.stringify(coinList));
+      });
+  }
+
   // 构建collapse详情页
   buildCollapseDetail() {
     this.fields = [];
