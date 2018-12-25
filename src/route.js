@@ -60,6 +60,10 @@ const ROUTES = [
     {
         path: '/runQuery/runQuery', component: asyncComponent(() => import('container/platform/accountQuery/runQuery/runQuery'))
     },
+    // 平台后台-- 编号 -流水查询
+    {
+        path: '/zdRunQuery/zdRunQuery', component: asyncComponent(() => import('container/platform/accountQuery/zdRunQuery/zdRunQuery'))
+    },
     // 平台后台--历史流水查询
     {
         path: '/hisRunquery/hisRunquery', component: asyncComponent(() => import('container/platform/accountQuery/hisRunquery/hisRunquery'))
@@ -72,6 +76,10 @@ const ROUTES = [
     {
         path: '/erc20AddressQuery/erc20AddressQuery', component: asyncComponent(() => import('container/platform/addressQuery/erc20AddressQuery/erc20AddressQuery'))
     },
+    // 平台后台--地址查询-erc
+    {
+        path: '/erc20AddressQuery/ercAddressQuery', component: asyncComponent(() => import('container/platform/addressQuery/erc20AddressQuery/ercAddressQuery'))
+    },
     // 平台后台--地址查询-eth
     {
         path: '/ethAddressQuery/ethAddressQuery', component: asyncComponent(() => import('container/platform/addressQuery/ethAddressQuery/ethAddressQuery'))
@@ -79,6 +87,10 @@ const ROUTES = [
     // 平台后台--地址查询-usd
     {
         path: '/usdAddressQuery/usdAddressQuery', component: asyncComponent(() => import('container/platform/addressQuery/usdAddressQuery/usdAddressQuery'))
+    },
+    // 平台后台--流水查询-usd
+    {
+        path: '/usdAddressQuery/usdRunQuery', component: asyncComponent(() => import('container/platform/addressQuery/usdAddressQuery/usdRunQuery'))
     },
     // 平台后台--地址查询-wan
     {
@@ -120,6 +132,10 @@ const ROUTES = [
     {
         path: '/marketInformation/marketInformation', component: asyncComponent(() => import('container/platform/marketInformation/marketInformation/marketInformation'))
     },
+    // 平台后台--行情资讯-资讯管理-详情·新增·修改
+    {
+        path: '/marketInformation/marketInformation-addedit', component: asyncComponent(() => import('container/platform/marketInformation/marketInformation/marketInformation-addedit'))
+    },
     // 平台后台--归集散取-定存查询
     {
         path: '/returnTake/dependingQuery', component: asyncComponent(() => import('container/platform/returnTake/dependingQuery/dependingQuery'))
@@ -127,6 +143,10 @@ const ROUTES = [
     // 平台后台--归集散取-散取查询
     {
         path: '/returnTake/scatteredQuery', component: asyncComponent(() => import('container/platform/returnTake/scatteredQuery/scatteredQuery'))
+    },
+    // 平台后台--归集散取-散取查询-提币广播
+    {
+        path: '/returnTake/scatteredQuery/moneyRedio', component: asyncComponent(() => import('container/platform/returnTake/scatteredQuery/scatteredQuery-redio'))
     },
     // 平台后台--归集散取-归集查询
     {

@@ -3,7 +3,7 @@ export const SYSTEM_CODE = 'CD-TOKEN00019';
  export const UPLOAD_URL = 'http://up.qiniup.com';
 // export const UPLOAD_URL = 'images.sl.hichengdai.com';
 // 七牛图片前缀
-export const PIC_PREFIX = 'http://images.sl.hichengdai.com/';
+export const PIC_PREFIX = 'http://pk8lcxtjm.bkt.clouddn.com/';
 // export const PIC_PREFIX = 'http://images.sl.hichengdai.com/';
 export const PIC_BASEURL_L = '?imageMogr2/auto-orient/thumbnail/!1000x1000r';
 

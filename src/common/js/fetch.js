@@ -6,15 +6,16 @@ import { clearUser, showErrMsg } from './util';
 const ERR_OK = '0';
 const ERR_TIME_OUT = '4';
 
-export default function fetch(code, param = {}) {
+export default function fetch(code, param = {}, type) {
   const url = '/api';
-
   const data = {
     systemCode: SYSTEM_CODE,
-    companyCode: SYSTEM_CODE,
     token: cookies.get('token') || '',
     ...param
   };
+  if(type === 'system') {
+    data.companyCode = SYSTEM_CODE;
+  }
 
   param = 'code=' + code + '&json=' + encodeURIComponent(JSON.stringify(data));
   return axios.post(url, param, {

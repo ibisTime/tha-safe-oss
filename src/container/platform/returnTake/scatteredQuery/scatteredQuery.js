@@ -12,6 +12,7 @@ import {
   setSearchData
 } from '@redux/platform/returnTake/scatteredQuery';
 import { listWrapper } from 'common/js/build-list';
+import { showWarnMsg } from 'common/js/util';
 
 @listWrapper(
   state => ({
@@ -49,7 +50,21 @@ class ScatteredQuery extends React.Component {
       title: '到账时间',
       field: 'url'
     }];
-    return this.props.buildList({ fields, pageCode: 805000, deleteCode: 805004 });
+    return this.props.buildList({
+      fields,
+      pageCode: 805000,
+      btnEvent: {
+        moneyRedio: (keys, items) => {
+          if (!keys || !keys.length) {
+              showWarnMsg('请选择记录');
+          } else if (keys.length > 1) {
+              showWarnMsg('请选择一条记录');
+          }else {
+            this.props.history.push(`/returnTake/scatteredQuery/moneyRedio?code=${keys[0]}&v=1`);
+          }
+        }
+      }
+    });
   }
 }
 

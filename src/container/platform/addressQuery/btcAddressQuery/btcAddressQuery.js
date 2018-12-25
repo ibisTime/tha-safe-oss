@@ -25,37 +25,37 @@ class BtcAddressQuery extends React.Component {
   render() {
     const fields = [{
       title: '公司编号',
-      field: 'name',
-      search: true
+      field: 'companyCode'
     }, {
         title: '类型',
-        field: 'code'
+        field: 'type',
+        type: 'select',
+        search: true
     }, {
       title: '地址',
-      field: 'url'
+      field: 'address'
     }, {
       title: '生成时间',
-      field: 'remark'
+      field: 'createDatetime',
+      type: 'datetime'
     }, {
         title: '状态',
-        field: 'code'
-    }, {
-      title: '本地使用次数',
-      field: 'url'
-    }, {
-      title: '网络使用次数',
-      field: 'url'
-    }, {
-      title: '初始金额',
-      field: 'url'
+        field: 'status',
+        type: 'select',
+        search: true
     }, {
       title: '当前余额',
-      field: 'url'
+      field: 'btcBalance',
+      coin: 'BTC',
+      amount: true
     }, {
       title: '备注',
-      field: 'url'
+      field: 'remark'
     }];
-    return this.props.buildList({ fields, pageCode: 805000, deleteCode: 805004 });
+    return this.props.buildList({
+      fields,
+      pageCode: 802485
+    });
   }
 }
 

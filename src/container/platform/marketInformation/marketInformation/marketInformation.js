@@ -12,6 +12,7 @@ import {
   setSearchData
 } from '@redux/platform/marketInformation/marketInformation';
 import { listWrapper } from 'common/js/build-list';
+import { showWarnMsg } from 'common/js/util';
 
 @listWrapper(
   state => ({
@@ -40,7 +41,33 @@ class MarketInformation extends React.Component {
       title: '备注',
       field: 'url'
     }];
-    return this.props.buildList({ fields, pageCode: 805000, deleteCode: 805004 });
+    return this.props.buildList({
+      fields,
+      pageCode: 805000,
+      btnEvent: {
+        add: (keys, items) => {
+          this.props.history.push(`/marketInformation/marketInformation-addedit?code=${keys[0]}`);
+        },
+        edit: (keys, items) => {
+          if (!keys || !keys.length) {
+              showWarnMsg('请选择记录');
+          } else if (keys.length > 1) {
+              showWarnMsg('请选择一条记录');
+          }else {
+            this.props.history.push(`/marketInformation/marketInformation-addedit?code=${keys[0]}$edit=1`);
+          }
+        },
+        detail: (keys, items) => {
+          if (!keys || !keys.length) {
+              showWarnMsg('请选择记录');
+          } else if (keys.length > 1) {
+              showWarnMsg('请选择一条记录');
+          }else {
+            this.props.history.push(`/marketInformation/marketInformation-addedit?code=${keys[0]}v=1`);
+          }
+        }
+      }
+    });
   }
 }
 

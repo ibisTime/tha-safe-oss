@@ -12,6 +12,7 @@ import {
   setSearchData
 } from '@redux/platform/addressQuery/erc20AddressQuery';
 import { listWrapper } from 'common/js/build-list';
+import { showWarnMsg } from 'common/js/util';
 
 @listWrapper(
   state => ({
@@ -24,38 +25,38 @@ import { listWrapper } from 'common/js/build-list';
 class Erc20AddressQuery extends React.Component {
   render() {
     const fields = [{
-      title: '公司编号',
-      field: 'name',
+      title: '符号',
+      field: 'symbol',
       search: true
     }, {
-        title: '类型',
-        field: 'code'
+      title: '英文名称',
+      field: 'ename'
     }, {
-      title: '地址',
-      field: 'url'
+        title: '中文名称',
+        field: 'cname'
     }, {
-      title: '生成时间',
-      field: 'remark'
-    }, {
-        title: '状态',
-        field: 'code'
-    }, {
-      title: '本地使用次数',
-      field: 'url'
-    }, {
-      title: '网络使用次数',
-      field: 'url'
-    }, {
-      title: '初始金额',
-      field: 'url'
-    }, {
-      title: '当前余额',
-      field: 'url'
-    }, {
-      title: '备注',
-      field: 'url'
+      title: '单位',
+      field: 'unit'
     }];
-    return this.props.buildList({ fields, pageCode: 805000, deleteCode: 805004 });
+    return this.props.buildList({
+      fields,
+      rowKey: 'symbol',
+      searchParams: {
+        type: '1T'
+      },
+      pageCode: 802265,
+      btnEvent: {
+        distribution: (keys, items) => {
+          if (!keys || !keys.length) {
+              showWarnMsg('请选择记录');
+          } else if (keys.length > 1) {
+              showWarnMsg('请选择一条记录');
+          }else {
+            this.props.history.push(`/erc20AddressQuery/ercAddressQuery?symbol=${keys[0]}`);
+          }
+        }
+      }
+    });
   }
 }
 

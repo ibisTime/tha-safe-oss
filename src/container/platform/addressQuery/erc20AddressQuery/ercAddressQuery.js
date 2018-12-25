@@ -1,4 +1,4 @@
-// wan地址查询
+// erc20地址查询
 
 import React from 'react';
 import {
@@ -10,20 +10,21 @@ import {
   doFetching,
   cancelFetching,
   setSearchData
-} from '@redux/platform/addressQuery/wanAddressQuery';
+} from '@redux/platform/addressQuery/ercAddressQuery';
 import { listWrapper } from 'common/js/build-list';
-import { showWarnMsg } from 'common/js/util';
+import { getQueryString, showWarnMsg } from 'common/js/util';
 
 @listWrapper(
   state => ({
-    ...state.wanAddressQuery,
+    ...state.ercAddressQuery,
     parentCode: state.menu.subMenuCode
   }),
   { setTableData, clearSearchParam, doFetching, setBtnList,
     cancelFetching, setPagination, setSearchParam, setSearchData }
 )
-class WanAddressQuery extends React.Component {
+class AddressQuery extends React.Component {
   render() {
+    var symbol = getQueryString('symbol', this.props.location.search);
     const fields = [{
       title: '公司编号',
       field: 'companyCode'
@@ -46,8 +47,8 @@ class WanAddressQuery extends React.Component {
         search: true
     }, {
       title: '当前余额',
-      field: 'wanBalance',
-      coin: 'WAN',
+      field: 'balance',
+      coin: symbol,
       amount: true
     }, {
       title: '备注',
@@ -55,20 +56,32 @@ class WanAddressQuery extends React.Component {
     }];
     return this.props.buildList({
       fields,
-      pageCode: 802355,
-      btnEvent: {
-        runQuery: (keys, items) => {
+      pageCode: 802105,
+      searchParams: {
+        currency: symbol
+      },
+      buttons: [{
+        name: '返回',
+        code: 'back',
+        handler: () => this.props.history.go(-1)
+      }, {
+        code: 'runQuery',
+        name: '流水查询',
+        handler: (keys, items) => {
           if (!keys || !keys.length) {
-              showWarnMsg('请选择记录');
+            showWarnMsg('请选择记录');
           } else if (keys.length > 1) {
-              showWarnMsg('请选择一条记录');
-          } else {
-            this.props.history.push(`/usdAddressQuery/usdRunQuery?address=${items[0].address}&pageCode=802357&currency=WAN`);
+            showWarnMsg('请选择一条记录');
+          } else{
+            this.props.history.push(`/usdAddressQuery/usdRunQuery?address=${items[0].address}&pageCode=802108&currency=${symbol}`);
           }
         }
-      }
+      }, {
+        code: 'export',
+        name: '导出'
+      }]
     });
   }
 }
 
-export default WanAddressQuery;
+export default AddressQuery;

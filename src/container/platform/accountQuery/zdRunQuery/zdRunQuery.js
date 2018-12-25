@@ -10,20 +10,21 @@ import {
   doFetching,
   cancelFetching,
   setSearchData
-} from '@redux/platform/accountQuery/runQuery';
+} from '@redux/platform/accountQuery/zdRunQuery';
 import { listWrapper } from 'common/js/build-list';
-import { moneyFormat, dateTimeFormat } from 'common/js/util';
+import { getQueryString, showWarnMsg, dateTimeFormat, moneyFormat } from 'common/js/util';
 
 @listWrapper(
   state => ({
-    ...state.runQuery,
+    ...state.zdRunQuery,
     parentCode: state.menu.subMenuCode
   }),
   { setTableData, clearSearchParam, doFetching, setBtnList,
     cancelFetching, setPagination, setSearchParam, setSearchData }
 )
-class RunQuery extends React.Component {
+class ZdRunQuery extends React.Component {
   render() {
+    var accountNumber = getQueryString('accountNumber', this.props.location.search) || '';
     const fields = [{
       title: '公司编号',
       field: 'companyCode',
@@ -70,9 +71,32 @@ class RunQuery extends React.Component {
     }];
     return this.props.buildList({
       fields,
-      pageCode: 802520
+      searchParams: {
+        accountNumber
+      },
+      pageCode: 802520,
+      buttons: [{
+        name: '返回',
+        code: 'back',
+        handler: () => this.props.history.go(-1)
+      }, {
+        code: 'runQuery',
+        name: '详情',
+        handler: (keys, items) => {
+          if (!keys || !keys.length) {
+            showWarnMsg('请选择记录');
+          } else if (keys.length > 1) {
+            showWarnMsg('请选择一条记录');
+          } else{
+            this.props.history.push(`/customer/customers/androdition/edit?code=${keys[0]}`);
+          }
+        }
+      }, {
+        code: 'export',
+        name: '导出'
+      }]
     });
   }
 }
 
-export default RunQuery;
+export default ZdRunQuery;

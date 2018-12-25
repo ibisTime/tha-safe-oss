@@ -24,15 +24,15 @@ import { listWrapper } from 'common/js/build-list';
 class TopUpuery extends React.Component {
   render() {
     const fields = [{
-      title: '账户名',
-      field: 'name',
+      title: '公司编号',
+      field: 'companyCode',
       search: true
     }, {
         title: '账号',
-        field: 'code'
+        field: 'accountNumber'
     }, {
       title: '类型',
-      field: 'url'
+      field: 'type'
     }, {
       title: '余额',
       field: 'url'
@@ -40,7 +40,10 @@ class TopUpuery extends React.Component {
       title: '创建时间',
       field: 'url'
     }];
-    return this.props.buildList({ fields, pageCode: 805000, deleteCode: 805004 });
+    return this.props.buildList({
+      fields,
+      pageCode: 802705
+    });
   }
 }
 

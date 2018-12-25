@@ -1,11 +1,12 @@
-// 资讯管理--详情
+// 散取查询--详情
+
 import React from 'react';
 import { Form } from 'antd';
 import { getQueryString } from 'common/js/util';
 import DetailUtil from 'common/js/build-detail';
 
 @Form.create()
-class MarketInformationAddedit extends DetailUtil {
+class ScatteredQueryRedio extends DetailUtil {
   constructor(props) {
     super(props);
     this.code = getQueryString('code', this.props.location.search);
@@ -13,28 +14,23 @@ class MarketInformationAddedit extends DetailUtil {
   }
   render() {
     const fields = [{
-      title: '标题',
+      title: '取现地址',
       field: 'name'
     }, {
-      title: '作者',
+      title: '余额',
+      field: 'code'
+    }, {
+      title: '金额',
       field: 'url'
     }, {
-      title: '正文',
-      field: 'url',
+      title: '接收地址',
+      field: 'url'
+    }, {
+      title: '备注',
+      field: 'remark',
       type: 'textarea',
-      normalArea: true
-    }, {
-      title: '原文链接',
-      field: 'url'
-    }, {
-        title: '封面',
-        field: 'code',
-        type: 'img',
-        required: true,
-        single: true
-    }, {
-      title: '摘要',
-      field: 'url'
+      normalArea: true,
+      readonly: false
     }];
     return this.buildDetail({
       fields,
@@ -47,4 +43,4 @@ class MarketInformationAddedit extends DetailUtil {
   }
 }
 
-export default MarketInformationAddedit;
+export default ScatteredQueryRedio;

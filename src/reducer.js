@@ -46,16 +46,22 @@ import { dataDictionary } from './redux/security/dataDictionary';
 import { accountQuery } from './redux/platform/accountQuery/accountQuery';
 // 平台后台-流水查询
 import { runQuery } from './redux/platform/accountQuery/runQuery';
+// 平台后台- 编号 -流水查询
+import { zdRunQuery } from './redux/platform/accountQuery/zdRunQuery';
 // 平台后台-历史流水查询
 import { hisRunquery } from './redux/platform/accountQuery/hisRunquery';
 // 平台后台-地址查询-btc
 import { btcAddressQuery } from './redux/platform/addressQuery/btcAddressQuery';
 // 平台后台-地址查询-erc20
 import { erc20AddressQuery } from './redux/platform/addressQuery/erc20AddressQuery';
+// 平台后台-地址查询-erc
+import { ercAddressQuery } from './redux/platform/addressQuery/ercAddressQuery';
 // 平台后台-地址查询-eth
 import { ethAddressQuery } from './redux/platform/addressQuery/ethAddressQuery';
 // 平台后台-地址查询-usd
 import { usdAddressQuery } from './redux/platform/addressQuery/usdAddressQuery';
+// 平台后台-流水查询-usd
+import { usdRunQuery } from './redux/platform/addressQuery/usdRunQuery';
 // 平台后台-地址查询-wan
 import { wanAddressQuery } from './redux/platform/addressQuery/wanAddressQuery';
 // 平台后台-地址查询-wrc
@@ -109,11 +115,14 @@ export default combineReducers({
     dataDictionary,
     accountQuery,
     runQuery,
+    zdRunQuery,
     hisRunquery,
     btcAddressQuery,
     erc20AddressQuery,
+    ercAddressQuery,
     ethAddressQuery,
     usdAddressQuery,
+    usdRunQuery,
     wanAddressQuery,
     wrc20AddressQuery,
     currency,

@@ -15,8 +15,7 @@ class ScatteredQueryAddedit extends DetailUtil {
   render() {
 		const fields = [{
       title: '订单编号',
-      field: 'name',
-      search: true
+      field: 'name'
     }, {
         title: '充币人',
         field: 'code'

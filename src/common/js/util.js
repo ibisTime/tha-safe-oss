@@ -281,31 +281,44 @@ export function showErrMsg(msg, time = 2) {
   showMsg(msg, 'error', time);
 }
 
-export function showConfirm({okType = 'primary', title, content, onOk, onCancel}) {
-  let config = {
-    okType,
-    title: title,
-    content: content,
-    okText: '确定',
-    cancelText: '取消',
-    onOk() {
-      onOk && onOk();
-    },
-    onCancel() {
-      onCancel && onCancel();
-    }
-  };
-  Modal.confirm(config);
+export function showMsgfirm(okType, title, content, onOk, onCancel) {
+    Modal.confirm({
+        okType,
+        title,
+        content,
+        okText: '确定',
+        cancelText: '取消',
+        onOk() {
+            onOk && onOk();
+        },
+        onCancel() {
+            onCancel && onCancel();
+        }
+    });
+}
+
+export function showConfirm({okType = 'primary', onOk, onCancel}) {
+    Modal.confirm({
+        okType,
+        title: '您确定要删除该条记录吗?',
+        content: '删除记录后无法还原',
+        okText: '确定',
+        cancelText: '取消',
+        onOk() {
+            onOk && onOk();
+        },
+        onCancel() {
+            onCancel && onCancel();
+        }
+    });
 }
 
 export function showDelConfirm({onOk, onCancel}) {
-  showConfirm({
-    okType: 'danger',
-    title: '您确定要删除该条记录吗?',
-    content: '删除记录后无法还原',
-    onOk,
-    onCancel
-  });
+    showConfirm({
+        okType: 'danger',
+        onOk,
+        onCancel
+    });
 }
 
 export function convertCurrency(currencyDigits) {

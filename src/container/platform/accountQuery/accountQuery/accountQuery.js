@@ -12,6 +12,7 @@ import {
   setSearchData
 } from '@redux/platform/accountQuery/accountQuery';
 import { listWrapper } from 'common/js/build-list';
+import { moneyFormat, showWarnMsg } from 'common/js/util';
 
 @listWrapper(
   state => ({
@@ -24,26 +25,45 @@ import { listWrapper } from 'common/js/build-list';
 class AccountQuery extends React.Component {
   render() {
     const fields = [{
-      title: '账户名',
-      field: 'name',
+      title: '公司编号',
+      field: 'companyCode',
       search: true
     }, {
         title: '账号',
-        field: 'code'
+        field: 'accountNumber'
     }, {
       title: '类型',
-      field: 'url'
+      field: 'type'
     }, {
       title: '余额',
-      field: 'remark'
+      field: 'amount',
+      render(v, data) {
+        return moneyFormat(v, '', data.currency);
+      }
     }, {
         title: '状态',
-        field: 'code'
+        field: 'status'
     }, {
       title: '创建时间',
-      field: 'url'
+      field: 'createDatetime',
+      type: 'datetime'
     }];
-    return this.props.buildList({ fields, pageCode: 805000, deleteCode: 805004 });
+    return this.props.buildList({
+      fields,
+      rowKey: 'accountNumber',
+      pageCode: 802500,
+      btnEvent: {
+        runQuery: (keys, items) => {
+          if (!keys || !keys.length) {
+              showWarnMsg('请选择记录');
+          } else if (keys.length > 1) {
+              showWarnMsg('请选择一条记录');
+          } else {
+            this.props.history.push(`/zdRunQuery/zdRunQuery?accountNumber=${keys[0]}`);
+          }
+      }
+      }
+    });
   }
 }
 

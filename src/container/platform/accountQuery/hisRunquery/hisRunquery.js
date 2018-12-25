@@ -24,8 +24,8 @@ import { listWrapper } from 'common/js/build-list';
 class HisRunquery extends React.Component {
   render() {
     const fields = [{
-      title: '户名',
-      field: 'name',
+      title: '公司编号',
+      field: 'companyCode',
       search: true
     }, {
         title: '地址',
@@ -52,7 +52,10 @@ class HisRunquery extends React.Component {
       title: '备注',
       field: 'url'
     }];
-    return this.props.buildList({ fields, pageCode: 805000, deleteCode: 805004 });
+    return this.props.buildList({
+      fields,
+      pageCode: 802540
+    });
   }
 }
 

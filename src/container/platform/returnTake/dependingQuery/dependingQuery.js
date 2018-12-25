@@ -12,6 +12,7 @@ import {
   setSearchData
 } from '@redux/platform/returnTake/dependingQuery';
 import { listWrapper } from 'common/js/build-list';
+import { moneyFormat } from 'common/js/util';
 
 @listWrapper(
   state => ({
@@ -25,14 +26,17 @@ class DependingQuery extends React.Component {
   render() {
     const fields = [{
       title: '订单编号',
-      field: 'name',
+      field: 'code',
       search: true
     }, {
         title: '充币人',
-        field: 'code'
+        field: 'name'
     }, {
       title: '金额',
-      field: 'url'
+      field: 'amount',
+      render(v, data) {
+        return moneyFormat(v, '', data.currency);
+      }
     }, {
       title: '币种',
       field: 'url'
@@ -49,7 +53,10 @@ class DependingQuery extends React.Component {
       title: '到账时间',
       field: 'url'
     }];
-    return this.props.buildList({ fields, pageCode: 805000, deleteCode: 805004 });
+    return this.props.buildList({
+      fields,
+      pageCode: 802708
+    });
   }
 }
 

@@ -1,6 +1,7 @@
 // 币种管理
 
 import React from 'react';
+import fetch from 'common/js/fetch';
 import {
   setTableData,
   setPagination,
@@ -11,7 +12,7 @@ import {
   cancelFetching,
   setSearchData
 } from '@redux/platform/customerManagement/currency';
-import { moneyFormat, showWarnMsg, showConfirm } from 'common/js/util';
+import { moneyFormat, showWarnMsg, showMsgfirm, getUserName } from 'common/js/util';
 import { listWrapper } from 'common/js/build-list';
 
 @listWrapper(
@@ -22,6 +23,7 @@ import { listWrapper } from 'common/js/build-list';
   { setTableData, clearSearchParam, doFetching, setBtnList,
     cancelFetching, setPagination, setSearchParam, setSearchData }
 )
+
 class Currency extends React.Component {
   render() {
     const fields = [{
@@ -91,15 +93,41 @@ class Currency extends React.Component {
             this.props.history.push(`/customerManagement/currency-addedit?add=1`);
           },
           remRelease: (keys, items) => {
+            function fbRemRelease() {
+              fetch('802253', {
+                symbol: keys[0],
+                updater: getUserName()
+              }).then(data => {
+                showWarnMsg('发布成功');
+                setTimeout(() => {
+                  window.location.reload();
+                }, 1500);
+              });
+            }
+            function cxRemRelease() {
+              fetch('802254', {
+                symbol: keys[0],
+                updater: getUserName()
+              }).then(data => {
+                showWarnMsg('操作成功');
+                setTimeout(() => {
+                  window.location.reload();
+                }, 1500);
+              });
+            }
+            function cancelFn() {
+
+            }
             if (!keys || !keys.length) {
                 showWarnMsg('请选择记录');
             } else if (keys.length > 1) {
                 showWarnMsg('请选择一条记录');
             }else {
-              if(items[0].status === '0') {
-                showConfirm('', '');
-              } else if(items[0].status === '1') {
-                showConfirm('', '');
+              console.log(items[0].status === '0');
+              if(items[0].status === '1') {
+                showMsgfirm('primary', '发布', '确定发布？', fbRemRelease);
+              } else if(items[0].status === '0') {
+                showMsgfirm('', '撤下', '确定撤下？', cxRemRelease);
               }
             }
           }
