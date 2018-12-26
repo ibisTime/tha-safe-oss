@@ -22,7 +22,11 @@ class DataDictionaryEdit extends DetailUtil {
       readonly: true
     }, {
       title: '参数值',
-      field: 'cvalue'
+      field: 'cvalue',
+      required: true
+    }, {
+      field: 'remark',
+      title: '备注'
     }];
     return this.buildDetail({
       fields,
@@ -30,7 +34,7 @@ class DataDictionaryEdit extends DetailUtil {
       code: this.code,
       view: this.view,
       detailCode: '660907',
-      editCode: '660902'
+      editCode: '660911'
     });
   }
 }

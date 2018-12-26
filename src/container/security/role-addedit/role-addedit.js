@@ -21,6 +21,10 @@ class RoleAddEdit extends DetailUtil {
       required: true,
       maxlength: 30
     }, {
+      title: '等级',
+      field: 'level',
+      required: true
+    }, {
       title: '备注',
       field: 'remark',
       maxlength: 250

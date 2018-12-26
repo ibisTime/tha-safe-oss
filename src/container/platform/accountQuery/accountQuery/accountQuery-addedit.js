@@ -1,7 +1,7 @@
 // 账户查询-详情
 import React from 'react';
 import { Form } from 'antd';
-import { getQueryString } from 'common/js/util';
+import { getQueryString, moneyFormat } from 'common/js/util';
 import DetailUtil from 'common/js/build-detail';
 
 @Form.create()
@@ -12,33 +12,36 @@ class AccountQueryAddedit extends DetailUtil {
     this.view = !!getQueryString('v', this.props.location.search);
   }
   render() {
-		const fields = [{
-      title: '账户名',
-      field: 'name',
+    const fields = [{
+      title: '公司编号',
+      field: 'companyCode',
       search: true
     }, {
-        title: '账号',
-        field: 'code'
+      title: '账号',
+      field: 'accountNumber'
     }, {
       title: '类型',
-      field: 'url'
+      field: 'type'
     }, {
       title: '余额',
-      field: 'remark'
+      field: 'amount',
+      render(v, data) {
+        return moneyFormat(v, '', data.currency);
+      }
     }, {
-        title: '状态',
-        field: 'code'
+      title: '状态',
+      field: 'status'
     }, {
       title: '创建时间',
-      field: 'url'
+      field: 'createDatetime',
+      type: 'datetime'
     }];
     return this.buildDetail({
       fields,
-      key: 'id',
+      key: 'accountNumber',
       code: this.code,
       view: this.view,
-      detailCode: '623916',
-      editCode: '623910'
+      detailCode: '802501'
     });
   }
 }

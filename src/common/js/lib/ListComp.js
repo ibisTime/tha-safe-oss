@@ -397,7 +397,8 @@ export default class ListComponent extends React.Component {
             });
         } else if (item.listCode) {
             let param = item.params || {};
-            fetch(item.listCode, param).then(data => {
+            let type = 'system';
+            fetch(item.listCode, param, type).then(data => {
                 this.props.setSearchData({data, key: item.field});
             }).catch(() => {
             });

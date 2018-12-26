@@ -29,8 +29,15 @@ class DataDictionary extends React.Component {
       title: '参数值',
       field: 'dvalue'
     }, {
-      title: '参数说明',
-      field: 'remark'
+      field: 'updaterName',
+      title: '更新人'
+    }, {
+      field: 'updateDatetime',
+      title: '更新时间',
+      type: 'datetime'
+    }, {
+      field: 'remark',
+      title: '备注'
     }];
     return this.props.buildList({
       fields,

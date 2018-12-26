@@ -12,6 +12,7 @@ import {
   setSearchData
 } from '@redux/platform/returnTake/topUpuery';
 import { listWrapper } from 'common/js/build-list';
+import { moneyFormat } from 'common/js/util';
 
 @listWrapper(
   state => ({
@@ -31,14 +32,17 @@ class TopUpuery extends React.Component {
         title: '账号',
         field: 'accountNumber'
     }, {
+      title: '币种',
+      field: 'currency'
+    }, {
       title: '类型',
       field: 'type'
     }, {
       title: '余额',
-      field: 'url'
-    }, {
-      title: '创建时间',
-      field: 'url'
+      field: 'amountString',
+      render(v, data) {
+        return moneyFormat(v, '', data.currency);
+      }
     }];
     return this.props.buildList({
       fields,

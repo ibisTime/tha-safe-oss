@@ -34,7 +34,6 @@ class ScatteredQueryRedio extends DetailUtil {
     }];
     return this.buildDetail({
       fields,
-      key: 'id',
       code: this.code,
       view: this.view,
       detailCode: '623916',

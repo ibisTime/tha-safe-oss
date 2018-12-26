@@ -33,7 +33,7 @@ class UsdRunQuery extends React.Component {
     }, {
         title: '交易金额',
         field: 'value',
-        render(v, data) {
+        render(v) {
           return moneyFormat(v, '', currency);
         }
     }, {
@@ -52,7 +52,7 @@ class UsdRunQuery extends React.Component {
     }, {
         title: 'gas价格',
         field: 'gasPrice',
-        render(v, data) {
+        render(v) {
             return moneyFormat(v, '', '', '1e9') + 'Gwei';
         }
     }, {
@@ -61,7 +61,7 @@ class UsdRunQuery extends React.Component {
     }, {
         title: '矿工费',
         field: 'gasFee',
-        render(v, data) {
+        render(v) {
             return moneyFormat(v, '', currency);
         }
     }, {
@@ -74,6 +74,7 @@ class UsdRunQuery extends React.Component {
     }];
     return this.props.buildList({
       fields,
+      rowKey: 'id',
       searchParams: {
         address
       },

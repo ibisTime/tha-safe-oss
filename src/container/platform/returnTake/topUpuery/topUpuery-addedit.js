@@ -2,7 +2,7 @@
 
 import React from 'react';
 import { Form } from 'antd';
-import { getQueryString } from 'common/js/util';
+import { getQueryString, moneyFormat } from 'common/js/util';
 import DetailUtil from 'common/js/build-detail';
 
 @Form.create()
@@ -13,30 +13,31 @@ class TopUpueryAddedit extends DetailUtil {
     this.view = !!getQueryString('v', this.props.location.search);
   }
   render() {
-		const fields = [{
-      title: '账户名',
-      field: 'name',
+    const fields = [{
+      title: '公司编号',
+      field: 'companyCode',
       search: true
     }, {
-        title: '账号',
-        field: 'code'
+      title: '账号',
+      field: 'accountNumber'
+    }, {
+      title: '币种',
+      field: 'currency'
     }, {
       title: '类型',
-      field: 'url'
+      field: 'type'
     }, {
       title: '余额',
-      field: 'url'
-    }, {
-      title: '创建时间',
-      field: 'url'
+      field: 'amountString',
+      render(v, data) {
+        return moneyFormat(v, '', data.currency);
+      }
     }];
     return this.buildDetail({
       fields,
-      key: 'id',
       code: this.code,
       view: this.view,
-      detailCode: '623916',
-      editCode: '623910'
+      detailCode: '802706'
     });
   }
 }

@@ -33,7 +33,7 @@ class SummarizeQuery extends React.Component {
         field: 'name'
     }, {
       title: '金额',
-      field: 'amount',
+      field: 'amountString',
       render(v, data) {
         return moneyFormat(v, '', data.currency);
       }

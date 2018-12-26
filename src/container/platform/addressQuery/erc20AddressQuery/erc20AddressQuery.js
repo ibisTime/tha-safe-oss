@@ -23,7 +23,7 @@ import { showWarnMsg } from 'common/js/util';
     cancelFetching, setPagination, setSearchParam, setSearchData }
 )
 class Erc20AddressQuery extends React.Component {
-  render() {
+    render() {
     const fields = [{
       title: '符号',
       field: 'symbol',

@@ -1,7 +1,7 @@
 // 流水查询-详情
 import React from 'react';
 import { Form } from 'antd';
-import { getQueryString } from 'common/js/util';
+import { getQueryString, dateTimeFormat, moneyFormat } from 'common/js/util';
 import DetailUtil from 'common/js/build-detail';
 
 @Form.create()
@@ -12,41 +12,55 @@ class RunQueryAddedit extends DetailUtil {
     this.view = !!getQueryString('v', this.props.location.search);
   }
   render() {
-		const fields = [{
-      title: '户名',
-      field: 'name'
+    const fields = [{
+      title: '公司编号',
+      field: 'companyCode',
+      search: true
     }, {
-        title: '地址',
-        field: 'code'
+      title: '户名',
+      field: 'realName'
+    }, {
+      title: '币种',
+      field: 'currency'
     }, {
       title: '渠道',
-      field: 'url'
+      field: 'channelType',
+      type: 'select',
+      search: true
     }, {
       title: '业务类型',
-      field: 'remark'
+      field: 'bizType',
+      type: 'select',
+      search: true
     }, {
-        title: '变动金额',
-        field: 'code'
+      title: '变动金额',
+      field: 'transAmountString',
+      render(v, data) {
+        return moneyFormat(v, '', data.currency);
+      }
     }, {
-      title: '变动前金额',
-      field: 'url'
+      title: '状态',
+      field: 'status'
     }, {
-      title: '变动后金额',
-      field: 'remark'
-    }, {
-        title: '状态',
-        field: 'code'
+      field: 'createDatetime',
+      title: '创建时间',
+      formatter: dateTimeFormat,
+      field1: 'dateStart',
+      title1: '创建时间',
+      type: 'date',
+      field2: 'dateEnd',
+      type2: 'datetime',
+      twoDate: true,
+      search: true
     }, {
       title: '备注',
-      field: 'url'
+      field: 'remark'
     }];
     return this.buildDetail({
       fields,
-      key: 'id',
       code: this.code,
       view: this.view,
-      detailCode: '623916',
-      editCode: '623910'
+      detailCode: '802522'
     });
   }
 }

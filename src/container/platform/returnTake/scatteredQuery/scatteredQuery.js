@@ -12,7 +12,7 @@ import {
   setSearchData
 } from '@redux/platform/returnTake/scatteredQuery';
 import { listWrapper } from 'common/js/build-list';
-import { showWarnMsg } from 'common/js/util';
+import { showWarnMsg, moneyFormat } from 'common/js/util';
 
 @listWrapper(
   state => ({
@@ -26,33 +26,34 @@ class ScatteredQuery extends React.Component {
   render() {
     const fields = [{
       title: '订单编号',
-      field: 'name',
+      field: 'code',
       search: true
     }, {
-        title: '充币人',
-        field: 'code'
+      title: '充币人',
+      field: 'name'
     }, {
       title: '金额',
-      field: 'url'
+      field: 'amountString',
+      render(v, data) {
+        return moneyFormat(v, '', data.currency);
+      }
     }, {
       title: '币种',
-      field: 'url'
+      field: 'currency'
     }, {
       title: '状态',
-      field: 'url'
-    }, {
-      title: '到账时间',
-      field: 'url'
+      field: 'status'
     }, {
       title: '对账人',
       field: 'url'
     }, {
       title: '到账时间',
-      field: 'url'
+      field: 'confirmDatetime',
+      type: 'datetime'
     }];
     return this.props.buildList({
       fields,
-      pageCode: 805000,
+      pageCode: 802755,
       btnEvent: {
         moneyRedio: (keys, items) => {
           if (!keys || !keys.length) {

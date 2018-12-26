@@ -64,7 +64,7 @@ class accountQuery extends React.Component {
         }, {
             title: '业务类型',
             field: 'bizType',
-           listCode: '623907',
+           listCode: '660905',
            params: { 'companyCode': this.companyCode },
            keyName: 'dkey',
            valueName: 'dvalue',

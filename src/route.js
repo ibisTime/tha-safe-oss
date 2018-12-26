@@ -56,9 +56,17 @@ const ROUTES = [
     {
         path: '/accountQuery/accountQuery', component: asyncComponent(() => import('container/platform/accountQuery/accountQuery/accountQuery'))
     },
+    // 平台后台--账户查询-详情
+    {
+      path: '/accountQuery/accountQuery/addedit', component: asyncComponent(() => import('container/platform/accountQuery/accountQuery/accountQuery-addedit'))
+    },
     // 平台后台--流水查询
     {
         path: '/runQuery/runQuery', component: asyncComponent(() => import('container/platform/accountQuery/runQuery/runQuery'))
+    },
+    // 平台后台--流水查询-详情
+    {
+      path: '/runQuery/runQuery/addedit', component: asyncComponent(() => import('container/platform/accountQuery/runQuery/runQuery-addedit'))
     },
     // 平台后台-- 编号 -流水查询
     {
@@ -67,6 +75,10 @@ const ROUTES = [
     // 平台后台--历史流水查询
     {
         path: '/hisRunquery/hisRunquery', component: asyncComponent(() => import('container/platform/accountQuery/hisRunquery/hisRunquery'))
+    },
+    // 平台后台--历史流水查询-详情
+    {
+      path: '/hisRunquery/hisRunquery/addedit', component: asyncComponent(() => import('container/platform/accountQuery/hisRunquery/hisRunquery-addedit'))
     },
     // 平台后台--地址查询-btc
     {
@@ -96,9 +108,13 @@ const ROUTES = [
     {
         path: '/wanAddressQuery/wanAddressQuery', component: asyncComponent(() => import('container/platform/addressQuery/wanAddressQuery/wanAddressQuery'))
     },
-    // 平台后台--地址查询-wrc
+    // 平台后台--地址查询-wrc20
     {
         path: '/wrc20AddressQuery/wrc20AddressQuery', component: asyncComponent(() => import('container/platform/addressQuery/wrc20AddressQuery/wrc20AddressQuery'))
+    },
+    // 平台后台--地址查询-wrc
+    {
+      path: '/wrc20AddressQuery/wrcAddressQuery', component: asyncComponent(() => import('container/platform/addressQuery/wrc20AddressQuery/wrcAddressQuery'))
     },
     // 平台后台--客户管理-币种管理
     {
@@ -111,6 +127,10 @@ const ROUTES = [
     // 平台后台--客户管理-客户管理
     {
         path: '/customerManagement/customerManagement', component: asyncComponent(() => import('container/platform/customerManagement/customerManagement/customerManagement'))
+    },
+    // 平台后台--客户管理-客户管理-详情
+    {
+      path: '/customerManagement/customerManagement/addedit', component: asyncComponent(() => import('container/platform/customerManagement/customerManagement/customerManagement-addedit'))
     },
     // 平台后台--客户管理-规则查询
     {
@@ -140,9 +160,17 @@ const ROUTES = [
     {
         path: '/returnTake/dependingQuery', component: asyncComponent(() => import('container/platform/returnTake/dependingQuery/dependingQuery'))
     },
+    // 平台后台--归集散取-定存查询-详情
+    {
+      path: '/returnTake/dependingQuery/addedit', component: asyncComponent(() => import('container/platform/returnTake/dependingQuery/dependingQuery-addedit'))
+    },
     // 平台后台--归集散取-散取查询
     {
         path: '/returnTake/scatteredQuery', component: asyncComponent(() => import('container/platform/returnTake/scatteredQuery/scatteredQuery'))
+    },
+    // 平台后台--归集散取-散取查询
+    {
+      path: '/returnTake/scatteredQuery/addedit', component: asyncComponent(() => import('container/platform/returnTake/scatteredQuery/scatteredQuery-addedit'))
     },
     // 平台后台--归集散取-散取查询-提币广播
     {
@@ -152,9 +180,17 @@ const ROUTES = [
     {
         path: '/returnTake/summarizeQuery', component: asyncComponent(() => import('container/platform/returnTake/summarizeQuery/summarizeQuery'))
     },
+    // 平台后台--归集散取-归集查询-详情
+    {
+      path: '/returnTake/summarizeQuery/addedit', component: asyncComponent(() => import('container/platform/returnTake/summarizeQuery/summarizeQuery-addedit'))
+    },
     // 平台后台--归集散取-充值查询
     {
         path: '/returnTake/topUpuery', component: asyncComponent(() => import('container/platform/returnTake/topUpuery/topUpuery'))
+    },
+    // 平台后台--归集散取-充值查询-详情
+    {
+      path: '/returnTake/topUpuery/addedit', component: asyncComponent(() => import('container/platform/returnTake/topUpuery/topUpuery-addedit'))
     }
 ];
 

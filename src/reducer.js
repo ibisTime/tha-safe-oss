@@ -64,8 +64,10 @@ import { usdAddressQuery } from './redux/platform/addressQuery/usdAddressQuery';
 import { usdRunQuery } from './redux/platform/addressQuery/usdRunQuery';
 // 平台后台-地址查询-wan
 import { wanAddressQuery } from './redux/platform/addressQuery/wanAddressQuery';
-// 平台后台-地址查询-wrc
+// 平台后台-地址查询-wrc20
 import { wrc20AddressQuery } from './redux/platform/addressQuery/wrc20AddressQuery';
+// 平台后台-地址查询-wrc
+import { wrcAddressQuery } from './redux/platform/addressQuery/wrcAddressQuery';
 // 平台后台-客户管理-币种查询
 import { currency } from './redux/platform/customerManagement/currency';
 // 平台后台-客户管理-客户管理
@@ -125,6 +127,7 @@ export default combineReducers({
     usdRunQuery,
     wanAddressQuery,
     wrc20AddressQuery,
+    wrcAddressQuery,
     currency,
     customerManagement,
     rules,

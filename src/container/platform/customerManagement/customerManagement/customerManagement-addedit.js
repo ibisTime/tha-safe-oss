@@ -1,5 +1,4 @@
 // 客户管理--详情
-
 import React from 'react';
 import { Form } from 'antd';
 import { getQueryString } from 'common/js/util';
@@ -13,33 +12,30 @@ class CustomerManagementAddedit extends DetailUtil {
     this.view = !!getQueryString('v', this.props.location.search);
   }
   render() {
-		const fields = [{
-      title: '公司编号',
-      field: 'name',
-      search: true
+    const fields = [{
+      title: '更新人',
+      field: 'updater',
+      hidden: true
     }, {
-        title: '公司名称',
-        field: 'code'
+      title: '公司名称',
+      field: 'name'
     }, {
-      title: '联系人',
-      field: 'url'
+      title: '公司负责人',
+      field: 'charger'
     }, {
       title: '联系方式',
-      field: 'url'
-    }, {
-      title: '状态',
-      field: 'url'
+      field: 'chargerMobile'
     }, {
       title: '备注',
-      field: 'url'
+      field: 'remark'
     }];
     return this.buildDetail({
       fields,
-      key: 'id',
       code: this.code,
       view: this.view,
-      detailCode: '623916',
-      editCode: '623910'
+      detailCode: '802061',
+      editCode: '802051',
+      addCode: '802050'
     });
   }
 }

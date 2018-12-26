@@ -115,15 +115,11 @@ class Currency extends React.Component {
                 }, 1500);
               });
             }
-            function cancelFn() {
-
-            }
             if (!keys || !keys.length) {
                 showWarnMsg('请选择记录');
             } else if (keys.length > 1) {
                 showWarnMsg('请选择一条记录');
             }else {
-              console.log(items[0].status === '0');
               if(items[0].status === '1') {
                 showMsgfirm('primary', '发布', '确定发布？', fbRemRelease);
               } else if(items[0].status === '0') {

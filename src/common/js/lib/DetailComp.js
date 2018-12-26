@@ -223,7 +223,7 @@ export default class DetailComp extends React.Component {
           window.sessionStorage.setItem('coinData', JSON.stringify(coinData));
           window.sessionStorage.setItem('coinList', JSON.stringify(coinList));
       });
-  }
+  };
 
   // 构建collapse详情页
   buildCollapseDetail() {
@@ -764,7 +764,7 @@ export default class DetailComp extends React.Component {
       }
       let code = this.options.code ? this.options.editCode : this.options.addCode;
       this.doFetching();
-      fetch(code, params).then((data) => {
+      fetch(code, params, 'system').then((data) => {
         this.cancelFetching();
         showSucMsg('操作成功');
         if (this.options.onOk) {

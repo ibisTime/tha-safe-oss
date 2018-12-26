@@ -1,10 +1,13 @@
 import React from 'react';
 import { Form } from 'antd';
 import DetailUtil from 'common/js/build-detail';
+import { getQueryString } from 'common/js/util';
 
 @Form.create()
 class UserAddEdit extends DetailUtil {
   render() {
+    this.code = getQueryString('code', this.props.location.search);
+    this.view = !!getQueryString('v', this.props.location.search);
     const fields = [{
       field: 'kind',
       value: 'P',
@@ -40,7 +43,11 @@ class UserAddEdit extends DetailUtil {
     }];
     return this.buildDetail({
       fields,
-      addCode: 630050
+      key: 'userId',
+      code: this.code,
+      detailCode: 630067,
+      addCode: 630050,
+      editCode: 630058
     });
   }
 }

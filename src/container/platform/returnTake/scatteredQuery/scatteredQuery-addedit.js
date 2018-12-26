@@ -2,7 +2,7 @@
 
 import React from 'react';
 import { Form } from 'antd';
-import { getQueryString } from 'common/js/util';
+import { getQueryString, moneyFormat } from 'common/js/util';
 import DetailUtil from 'common/js/build-detail';
 
 @Form.create()
@@ -13,38 +13,46 @@ class ScatteredQueryAddedit extends DetailUtil {
     this.view = !!getQueryString('v', this.props.location.search);
   }
   render() {
-		const fields = [{
+    const fields = [{
       title: '订单编号',
+      field: 'code'
+    }, {
+      title: '账号',
+      field: 'accountNumber'
+    }, {
+      title: '公司编号',
+      field: 'companyCode'
+    }, {
+      title: '充币人',
       field: 'name'
     }, {
-        title: '充币人',
-        field: 'code'
-    }, {
       title: '金额',
-      field: 'url'
+      field: 'amountString',
+      render(v, data) {
+        return moneyFormat(v, '', data.currency);
+      }
     }, {
       title: '币种',
-      field: 'url'
+      field: 'currency'
     }, {
       title: '状态',
-      field: 'url'
-    }, {
-      title: '到账时间',
-      field: 'url'
+      field: 'status'
     }, {
       title: '对账人',
       field: 'url'
     }, {
       title: '到账时间',
-      field: 'url'
+      field: 'confirmDatetime',
+      type: 'datetime'
+    }, {
+      title: '备注',
+      field: 'remark'
     }];
     return this.buildDetail({
       fields,
-      key: 'id',
       code: this.code,
       view: this.view,
-      detailCode: '623916',
-      editCode: '623910'
+      detailCode: '802756'
     });
   }
 }

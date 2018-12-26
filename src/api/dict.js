@@ -6,13 +6,13 @@ import fetch from 'common/js/fetch';
  * @param bizType
  */
 
-export function getDictList({ parentKey, companyCode, bizType = 623907 }) {
+export function getDictList({ parentKey, companyCode, bizType = 660919 }) {
   if (getDictList[parentKey]) {
     return Promise.resolve(getDictList[parentKey]);
   }
   return fetch(bizType, {
     parentKey
-  }).then(data => {
+  }, 'system').then(data => {
     getDictList[parentKey] = data;
     return data;
   });

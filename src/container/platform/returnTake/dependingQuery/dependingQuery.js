@@ -29,8 +29,8 @@ class DependingQuery extends React.Component {
       field: 'code',
       search: true
     }, {
-        title: '充币人',
-        field: 'name'
+      title: '充币人',
+      field: 'name'
     }, {
       title: '金额',
       field: 'amount',
@@ -39,19 +39,17 @@ class DependingQuery extends React.Component {
       }
     }, {
       title: '币种',
-      field: 'url'
+      field: 'currency'
     }, {
       title: '状态',
-      field: 'url'
-    }, {
-      title: '到账时间',
-      field: 'url'
+      field: 'status'
     }, {
       title: '对账人',
       field: 'url'
     }, {
       title: '到账时间',
-      field: 'url'
+      field: 'confirmDatetime',
+      type: 'datetime'
     }];
     return this.props.buildList({
       fields,
