@@ -29,11 +29,14 @@ class ScatteredQuery extends React.Component {
       field: 'code',
       search: true
     }, {
-      title: '充币人',
-      field: 'name'
-    }, {
       title: '金额',
       field: 'amountString',
+      render(v, data) {
+        return moneyFormat(v, '', data.currency);
+      }
+    }, {
+      title: '矿工费',
+      field: 'payFeeString',
       render(v, data) {
         return moneyFormat(v, '', data.currency);
       }
@@ -44,12 +47,13 @@ class ScatteredQuery extends React.Component {
       title: '状态',
       field: 'status'
     }, {
-      title: '对账人',
-      field: 'url'
-    }, {
       title: '到账时间',
-      field: 'confirmDatetime',
+      field: 'payDatetime',
       type: 'datetime'
+    }, {
+      title: '公司编号',
+      field: 'companyCode',
+      search: true
     }];
     return this.props.buildList({
       fields,

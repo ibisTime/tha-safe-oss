@@ -13,25 +13,42 @@ class RunQueryAddedit extends DetailUtil {
   }
   render() {
     const fields = [{
-      title: '公司编号',
-      field: 'companyCode',
+      title: '流水编号',
+      field: 'code',
       search: true
     }, {
-      title: '户名',
-      field: 'realName'
+      title: '公司编号',
+      field: 'companyCode'
+    }, {
+      title: '账户编号',
+      field: 'accountNumber'
+    }, {
+      title: '商户流水号',
+      field: 'merchantJourCode'
+    }, {
+      title: '交易序号',
+      field: 'transOrderNo'
+    }, {
+      title: '上一条流水编号',
+      field: 'prevJourCode'
+    }, {
+      title: '商户订单号',
+      field: 'refOrderCode'
+    }, {
+      title: '对账人',
+      field: 'workUser'
+    }, {
+      title: '调账人',
+      field: 'adjustUser'
     }, {
       title: '币种',
       field: 'currency'
     }, {
-      title: '渠道',
-      field: 'channelType',
-      type: 'select',
-      search: true
-    }, {
       title: '业务类型',
-      field: 'bizType',
-      type: 'select',
-      search: true
+      field: 'bizType'
+    }, {
+      title: '业务说明',
+      field: 'bizNote'
     }, {
       title: '变动金额',
       field: 'transAmountString',
@@ -42,16 +59,27 @@ class RunQueryAddedit extends DetailUtil {
       title: '状态',
       field: 'status'
     }, {
-      field: 'createDatetime',
-      title: '创建时间',
-      formatter: dateTimeFormat,
-      field1: 'dateStart',
-      title1: '创建时间',
-      type: 'date',
-      field2: 'dateEnd',
-      type2: 'datetime',
-      twoDate: true,
-      search: true
+      field: 'transDatetime',
+      title: '交易时间',
+      type: 'datetime'
+    }, {
+      field: 'workDatetime',
+      title: '对账时间',
+      type: 'datetime'
+    }, {
+      field: 'adjustDatetime',
+      title: '调账时间',
+      type: 'datetime'
+    }, {
+      field: 'importDatetime',
+      title: '导入时间',
+      type: 'datetime'
+    }, {
+      title: '对账说明',
+      field: 'workNote'
+    }, {
+      title: '调账说明',
+      field: 'adjustNote'
     }, {
       title: '备注',
       field: 'remark'

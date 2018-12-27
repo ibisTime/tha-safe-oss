@@ -25,12 +25,11 @@ import { moneyFormat } from 'common/js/util';
 class SummarizeQuery extends React.Component {
   render() {
     const fields = [{
-      title: '订单编号',
-      field: 'code',
-      search: true
+      title: '被归集地址',
+      field: 'fromAddress'
     }, {
-        title: '充币人',
-        field: 'name'
+      title: '归集地址',
+      field: 'toAddress'
     }, {
       title: '金额',
       field: 'amountString',
@@ -44,10 +43,7 @@ class SummarizeQuery extends React.Component {
       title: '状态',
       field: 'status'
     }, {
-      title: '对账人',
-      field: 'url'
-    }, {
-      title: '到账时间',
+      title: '归集时间',
       field: 'confirmDatetime',
       type: 'datetime'
     }];

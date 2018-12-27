@@ -12,7 +12,7 @@ class UsdAddressQueryAddedit extends DetailUtil {
     this.view = !!getQueryString('v', this.props.location.search);
   }
   render() {
-		const fields = [{
+    const fields = [{
       title: '公司编号',
       field: 'name'
     }, {

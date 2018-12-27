@@ -29,21 +29,19 @@ class HisRunquery extends React.Component {
       field: 'companyCode',
       search: true
     }, {
-      title: '户名',
-      field: 'realName'
+      title: '账户编号',
+      field: 'accountNumber',
+      search: true
+    }, {
+      title: '商户流水号',
+      field: 'merchantJourCode',
+      search: true
     }, {
       title: '币种',
       field: 'currency'
     }, {
-      title: '渠道',
-      field: 'channelType',
-      type: 'select',
-      search: true
-    }, {
       title: '业务类型',
-      field: 'bizType',
-      type: 'select',
-      search: true
+      field: 'bizType'
     }, {
       title: '变动金额',
       field: 'transAmountString',
@@ -54,16 +52,9 @@ class HisRunquery extends React.Component {
       title: '状态',
       field: 'status'
     }, {
-      field: 'createDatetime',
-      title: '创建时间',
-      formatter: dateTimeFormat,
-      field1: 'dateStart',
-      title1: '创建时间',
-      type: 'date',
-      field2: 'dateEnd',
-      type2: 'datetime',
-      twoDate: true,
-      search: true
+      field: 'transDatetime',
+      title: '交易时间',
+      type: 'datetime'
     }, {
       title: '备注',
       field: 'remark'

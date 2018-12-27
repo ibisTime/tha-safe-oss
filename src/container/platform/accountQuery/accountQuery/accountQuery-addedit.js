@@ -13,21 +13,41 @@ class AccountQueryAddedit extends DetailUtil {
   }
   render() {
     const fields = [{
+      title: '调用者平台ID',
+      field: 'userId'
+    }, {
       title: '公司编号',
-      field: 'companyCode',
-      search: true
+      field: 'companyCode'
     }, {
       title: '账号',
       field: 'accountNumber'
     }, {
+      title: '币种',
+      field: 'currency'
+    }, {
       title: '类型',
       field: 'type'
     }, {
-      title: '余额',
-      field: 'amount',
-      render(v, data) {
+      title: '入金',
+      field: 'inAmountString',
+      formatter(v, data) {
         return moneyFormat(v, '', data.currency);
       }
+    }, {
+      title: '出金',
+      field: 'outAmountString',
+      formatter(v, data) {
+        return moneyFormat(v, '', data.currency);
+      }
+    }, {
+      title: '余额',
+      field: 'amountString',
+      formatter(v, data) {
+        return moneyFormat(v, '', data.currency);
+      }
+    }, {
+      title: '最新流水编号',
+      field: 'lastOrder'
     }, {
       title: '状态',
       field: 'status'

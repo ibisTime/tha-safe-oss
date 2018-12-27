@@ -24,9 +24,6 @@ import { listWrapper } from 'common/js/build-list';
 class BtcAddressQuery extends React.Component {
   render() {
     const fields = [{
-      title: '公司编号',
-      field: 'companyCode'
-    }, {
         title: '类型',
         field: 'type',
         type: 'select',
@@ -41,13 +38,15 @@ class BtcAddressQuery extends React.Component {
     }, {
         title: '状态',
         field: 'status',
-        type: 'select',
         search: true
     }, {
       title: '当前余额',
       field: 'btcBalance',
       coin: 'BTC',
       amount: true
+    }, {
+      title: '公司编号',
+      field: 'companyCode'
     }, {
       title: '备注',
       field: 'remark'

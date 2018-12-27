@@ -25,24 +25,30 @@ import { moneyFormat } from 'common/js/util';
 class TopUpuery extends React.Component {
   render() {
     const fields = [{
-      title: '公司编号',
-      field: 'companyCode',
-      search: true
-    }, {
         title: '账号',
         field: 'accountNumber'
     }, {
       title: '币种',
       field: 'currency'
     }, {
+      title: '渠道',
+      field: 'channel'
+    }, {
       title: '类型',
       field: 'type'
+    }, {
+      title: '推送状态',
+      field: 'pushStatus'
     }, {
       title: '余额',
       field: 'amountString',
       render(v, data) {
         return moneyFormat(v, '', data.currency);
       }
+    }, {
+      title: '公司编号',
+      field: 'companyCode',
+      search: true
     }];
     return this.props.buildList({
       fields,

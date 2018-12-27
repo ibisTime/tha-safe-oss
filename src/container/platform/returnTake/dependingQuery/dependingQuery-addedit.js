@@ -17,36 +17,47 @@ class DependingQueryAddedit extends DetailUtil {
       title: '订单编号',
       field: 'code'
     }, {
-      title: '账号',
-      field: 'accountNumber'
-    }, {
       title: '公司编号',
       field: 'companyCode'
     }, {
-      title: '充币人',
-      field: 'name'
-    }, {
-      title: '金额',
-      field: 'amountString',
-      render(v, data) {
-        return moneyFormat(v, '', data.currency);
-      }
+      title: '账号',
+      field: 'accountNumber'
     }, {
       title: '币种',
       field: 'currency'
     }, {
-      title: '状态',
-      field: 'status'
+      title: '类型',
+      field: 'type'
     }, {
-      title: '对账人',
-      field: 'url'
+      title: '业务类型',
+      field: 'bizType'
     }, {
-      title: '到账时间',
-      field: 'confirmDatetime',
-      type: 'datetime'
+      title: '渠道',
+      field: 'channel'
     }, {
-      title: '备注',
-      field: 'remark'
+      title: '公链',
+      field: 'payCardInfo'
+    }, {
+      title: '推送状态',
+      field: 'pushStatus'
+    }, {
+      title: '推送次数',
+      field: 'pushTimes'
+    }, {
+      title: '交易hash',
+      field: 'hash'
+    }, {
+      title: '余额',
+      field: 'amountString',
+      formatter(v, data) {
+        return moneyFormat(v, '', data.currency);
+      }
+    }, {
+      title: '充值时间',
+      field: 'createDatetime'
+    }, {
+      title: '业务说明',
+      field: 'bizNote'
     }];
     return this.buildDetail({
       fields,

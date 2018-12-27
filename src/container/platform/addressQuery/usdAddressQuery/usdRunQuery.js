@@ -12,7 +12,7 @@ import {
   setSearchData
 } from '@redux/platform/addressQuery/usdRunQuery';
 import { listWrapper } from 'common/js/build-list';
-import { getQueryString, showWarnMsg, dateTimeFormat, moneyFormat } from 'common/js/util';
+import { getQueryString, showWarnMsg, dateTimeFormat, moneyFormat, formatDate } from 'common/js/util';
 
 @listWrapper(
   state => ({
@@ -33,7 +33,7 @@ class UsdRunQuery extends React.Component {
     }, {
         title: '交易金额',
         field: 'value',
-        render(v) {
+        render(v, data) {
           return moneyFormat(v, '', currency);
         }
     }, {
@@ -48,29 +48,58 @@ class UsdRunQuery extends React.Component {
         }
     }, {
         title: 'gasLimit',
-        field: 'gasLimit'
+        field: 'gasLimit',
+        render(v, data) {
+          if(data.ethTransaction) {
+            return data.ethTransaction.gasLimit;
+          }
+          return v;
+        }
     }, {
         title: 'gas价格',
         field: 'gasPrice',
-        render(v) {
-            return moneyFormat(v, '', '', '1e9') + 'Gwei';
+        render(v, data) {
+          if(data.ethTransaction) {
+            return moneyFormat(data.ethTransaction.gasPrice, '', '', '1e9') + 'Gwei';
+          }
+          return moneyFormat(v, '', '', '1e9') + 'Gwei';
         }
     }, {
         title: '消耗gas',
-        field: 'gasUsed'
+        field: 'gasUsed',
+        render(v, data) {
+          if(data.ethTransaction) {
+            return data.ethTransaction.gasUsed;
+          }
+          return v;
+        }
     }, {
         title: '矿工费',
         field: 'gasFee',
-        render(v) {
-            return moneyFormat(v, '', currency);
+        render(v, data) {
+          if(data.ethTransaction) {
+            return moneyFormat(data.ethTransaction.gasFee, '', currency);
+          }
+          return moneyFormat(v, '', currency);
         }
     }, {
         field: 'refNo',
-        title: '关联订单号'
+        title: '关联订单号',
+        render(v, data) {
+          if(data.ethTransaction) {
+            return data.ethTransaction.refNo;
+          }
+          return v;
+        }
     }, {
         field: 'blockCreateDatetime',
         title: '网络记账时间',
-        type: 'datetime'
+        render(v, data) {
+          if(data.ethTransaction) {
+            return formatDate(data.ethTransaction.blockCreateDatetime);
+          }
+          return formatDate(v);
+        }
     }];
     return this.props.buildList({
       fields,
@@ -83,18 +112,6 @@ class UsdRunQuery extends React.Component {
         name: '返回',
         code: 'back',
         handler: () => this.props.history.go(-1)
-      }, {
-        code: 'runQuery',
-        name: '详情',
-        handler: (keys, items) => {
-          if (!keys || !keys.length) {
-            showWarnMsg('请选择记录');
-          } else if (keys.length > 1) {
-            showWarnMsg('请选择一条记录');
-          } else{
-            this.props.history.push(`/customer/customers/androdition/edit?code=${keys[0]}`);
-          }
-        }
       }, {
         code: 'export',
         name: '导出'

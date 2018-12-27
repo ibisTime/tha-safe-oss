@@ -32,6 +32,9 @@ class AccountQuery extends React.Component {
         title: '账号',
         field: 'accountNumber'
     }, {
+      title: '币种',
+      field: 'currency'
+    }, {
       title: '类型',
       field: 'type'
     }, {

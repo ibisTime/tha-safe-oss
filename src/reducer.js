@@ -7,39 +7,9 @@ import { securityMenu } from './redux/security/menu';
 import { securitySysParam } from './redux/security/sysParam';
 import { securityUser } from './redux/security/user';
 import { securityDataDict } from './redux/security/dataDict';
-// 客户管理--客户管理
-import { customerCustomers } from './redux/biz/customer/customers';
-// 客户管理--客户管理-报告列表
-import { customerReportLibrary } from './redux/biz/customer/reportlist/reportlibrary';
-// 客户管理--客户管理-android版本
-import { generalAndPublish } from './redux/general/andpublish';
-// 客户管理--客户管理-android版本
-import { generalIosPublish } from './redux/general/iospublish';
-// 客户管理--客户查询
-import { customerAccountQuery } from './redux/biz/customer/accountquery';
-// 客户管理--客户查询--流水查询
-import { accountQueryDetail } from './redux/biz/customer/accountquerydetail';
-// 客户管理--开子账号
-import { customerSubAccount } from './redux/biz/customer/subaccount';
-// 客户管理--客户查询--详情
-import { customerCustomersDetail } from './redux/biz/customer/customersdetail';
-// 用户查询--用户库
-import { userQueryUserBase } from './redux/biz/userquery/userbase';
-// 用户查询--用户库--添加备注
-import { userQueryAddEdit } from './redux/biz/userquery/userqueryAddedit';
-// k客户管理-报告列表
-import { userQueryReporyLibraryDetil } from './redux/biz/userquery/reportlibrarydetail';
-// 用户查询--用户库-报告库
-import { userQueryReporyLibrary } from './redux/biz/userquery/reportlibrary';
-// 用户查询--白名单
-import { userQueryWhiteList } from './redux/biz/userquery/whitelist';
-// 用户查询--黑名单
-import { userQueryBlackList } from './redux/biz/userquery/blacklist';
 // 系统参数管理--七牛云图片管理
 import { publicBuyAds } from './redux/public/buyADS';
 import { publicArticeManagement } from './redux/public/articlemanagement';
-// 系统参数管理--认证接口费用管理
-import { generalAndManagement } from './redux/general/andmanagement';
 // 数据字典管理 wallet
 import { dataDictionary } from './redux/security/dataDictionary';
 // 平台后台-账户查询
@@ -99,44 +69,31 @@ export default combineReducers({
   securityUser,
   securitySysParam,
   securityDataDict,
-    customerCustomers,
-    customerAccountQuery,
-    customerSubAccount,
-    customerReportLibrary,
-    userQueryUserBase,
-    userQueryReporyLibrary,
-    userQueryWhiteList,
-    userQueryBlackList,
-    userQueryAddEdit,
-    publicBuyAds,
-    publicArticeManagement,
-    generalAndManagement,
-    accountQueryDetail,
-    customerCustomersDetail,
-    userQueryReporyLibraryDetil,
-    dataDictionary,
-    accountQuery,
-    runQuery,
-    zdRunQuery,
-    hisRunquery,
-    btcAddressQuery,
-    erc20AddressQuery,
-    ercAddressQuery,
-    ethAddressQuery,
-    usdAddressQuery,
-    usdRunQuery,
-    wanAddressQuery,
-    wrc20AddressQuery,
-    wrcAddressQuery,
-    currency,
-    customerManagement,
-    rules,
-    btcCurrency,
-    fiatCurrency,
-    itsCurrency,
-    marketInformation,
-    dependingQuery,
-    scatteredQuery,
-    summarizeQuery,
-    topUpuery
+  publicBuyAds,
+  publicArticeManagement,
+  dataDictionary,
+  accountQuery,
+  runQuery,
+  zdRunQuery,
+  hisRunquery,
+  btcAddressQuery,
+  erc20AddressQuery,
+  ercAddressQuery,
+  ethAddressQuery,
+  usdAddressQuery,
+  usdRunQuery,
+  wanAddressQuery,
+  wrc20AddressQuery,
+  wrcAddressQuery,
+  currency,
+  customerManagement,
+  rules,
+  btcCurrency,
+  fiatCurrency,
+  itsCurrency,
+  marketInformation,
+  dependingQuery,
+  scatteredQuery,
+  summarizeQuery,
+  topUpuery
 });

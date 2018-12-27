@@ -14,9 +14,11 @@ class TopUpueryAddedit extends DetailUtil {
   }
   render() {
     const fields = [{
+      title: '订单编号',
+      field: 'code'
+    }, {
       title: '公司编号',
-      field: 'companyCode',
-      search: true
+      field: 'companyCode'
     }, {
       title: '账号',
       field: 'accountNumber'
@@ -27,11 +29,35 @@ class TopUpueryAddedit extends DetailUtil {
       title: '类型',
       field: 'type'
     }, {
+      title: '业务类型',
+      field: 'bizType'
+    }, {
+      title: '渠道',
+      field: 'channel'
+    }, {
+      title: '公链',
+      field: 'payCardInfo'
+    }, {
+      title: '推送状态',
+      field: 'pushStatus'
+    }, {
+      title: '推送次数',
+      field: 'pushTimes'
+    }, {
+      title: '交易hash',
+      field: 'hash'
+    }, {
       title: '余额',
       field: 'amountString',
-      render(v, data) {
+      formatter(v, data) {
         return moneyFormat(v, '', data.currency);
       }
+    }, {
+      title: '充值时间',
+      field: 'createDatetime'
+    }, {
+      title: '业务说明',
+      field: 'bizNote'
     }];
     return this.buildDetail({
       fields,

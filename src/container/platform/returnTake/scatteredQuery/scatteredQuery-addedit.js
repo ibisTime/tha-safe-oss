@@ -14,21 +14,24 @@ class ScatteredQueryAddedit extends DetailUtil {
   }
   render() {
     const fields = [{
+      title: '账户编号',
+      field: 'accountNumber'
+    }, {
       title: '订单编号',
       field: 'code'
     }, {
-      title: '账号',
-      field: 'accountNumber'
-    }, {
-      title: '公司编号',
-      field: 'companyCode'
-    }, {
-      title: '充币人',
-      field: 'name'
+      title: '商户平台订单号',
+      field: 'merchantOrderCode'
     }, {
       title: '金额',
       field: 'amountString',
-      render(v, data) {
+      formatter(v, data) {
+        return moneyFormat(v, '', data.currency);
+      }
+    }, {
+      title: '矿工费',
+      field: 'payFeeString',
+      formatter(v, data) {
         return moneyFormat(v, '', data.currency);
       }
     }, {
@@ -38,12 +41,34 @@ class ScatteredQueryAddedit extends DetailUtil {
       title: '状态',
       field: 'status'
     }, {
-      title: '对账人',
-      field: 'url'
+      title: '散取地址',
+      field: 'payUser'
+    }, {
+      title: '公链',
+      field: 'payCardInfo'
+    }, {
+      title: '取现地址',
+      field: 'payCardNo'
+    }, {
+      title: '交易hash',
+      field: 'hash'
+    }, {
+      title: '创建时间',
+      field: 'createDatetime',
+      type: 'datetime'
     }, {
       title: '到账时间',
-      field: 'confirmDatetime',
+      field: 'payDatetime',
       type: 'datetime'
+    }, {
+      title: '推送状态',
+      field: 'pushStatus'
+    }, {
+      title: '推送送次数',
+      field: 'pushTimes'
+    }, {
+      title: '公司编号',
+      field: 'companyCode'
     }, {
       title: '备注',
       field: 'remark'

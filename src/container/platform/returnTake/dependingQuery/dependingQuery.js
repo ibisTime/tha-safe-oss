@@ -25,31 +25,30 @@ import { moneyFormat } from 'common/js/util';
 class DependingQuery extends React.Component {
   render() {
     const fields = [{
-      title: '订单编号',
-      field: 'code',
-      search: true
-    }, {
-      title: '充币人',
-      field: 'name'
-    }, {
-      title: '金额',
-      field: 'amount',
-      render(v, data) {
-        return moneyFormat(v, '', data.currency);
-      }
+      title: '账号',
+      field: 'accountNumber'
     }, {
       title: '币种',
       field: 'currency'
     }, {
-      title: '状态',
-      field: 'status'
+      title: '渠道',
+      field: 'channel'
     }, {
-      title: '对账人',
-      field: 'url'
+      title: '类型',
+      field: 'type'
     }, {
-      title: '到账时间',
-      field: 'confirmDatetime',
-      type: 'datetime'
+      title: '推送状态',
+      field: 'pushStatus'
+    }, {
+      title: '余额',
+      field: 'amountString',
+      render(v, data) {
+        return moneyFormat(v, '', data.currency);
+      }
+    }, {
+      title: '公司编号',
+      field: 'companyCode',
+      search: true
     }];
     return this.props.buildList({
       fields,

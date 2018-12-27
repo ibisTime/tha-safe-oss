@@ -1,6 +1,6 @@
 import React from 'react';
 import { Form } from 'antd';
-import { getQueryString } from 'common/js/util';
+import { getQueryString, getUserId, getUserName } from 'common/js/util';
 import DetailUtil from 'common/js/build-detail';
 
 @Form.create()
@@ -12,17 +12,17 @@ class DataDictionaryEdit extends DetailUtil {
   }
   render() {
     const fields = [{
-      field: 'remark',
-      title: '参数名',
-      hidden: true
+      field: 'updater',
+      title: 'id',
+      hidden: true,
+      value: getUserName()
     }, {
-      field: 'remark1',
-      title: '参数名',
-      _keys: ['remark'],
+      field: 'dkey',
+      title: '参数键',
       readonly: true
     }, {
       title: '参数值',
-      field: 'cvalue',
+      field: 'dvalue',
       required: true
     }, {
       field: 'remark',
@@ -34,7 +34,7 @@ class DataDictionaryEdit extends DetailUtil {
       code: this.code,
       view: this.view,
       detailCode: '660907',
-      editCode: '660911'
+      editCode: '660902'
     });
   }
 }
