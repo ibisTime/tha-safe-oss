@@ -36,7 +36,9 @@ class AccountQuery extends React.Component {
       field: 'currency'
     }, {
       title: '类型',
-      field: 'type'
+      field: 'type',
+      type: 'select',
+      key: 'account_type'
     }, {
       title: '余额',
       field: 'amount',
@@ -44,8 +46,10 @@ class AccountQuery extends React.Component {
         return moneyFormat(v, '', data.currency);
       }
     }, {
-        title: '状态',
-        field: 'status'
+      title: '状态',
+      field: 'status',
+      type: 'select',
+      key: 'account_status'
     }, {
       title: '创建时间',
       field: 'createDatetime',

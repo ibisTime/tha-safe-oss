@@ -26,7 +26,9 @@ class AccountQueryAddedit extends DetailUtil {
       field: 'currency'
     }, {
       title: '类型',
-      field: 'type'
+      field: 'type',
+      type: 'select',
+      key: 'account_type'
     }, {
       title: '入金',
       field: 'inAmountString',
@@ -50,7 +52,9 @@ class AccountQueryAddedit extends DetailUtil {
       field: 'lastOrder'
     }, {
       title: '状态',
-      field: 'status'
+      field: 'status',
+      type: 'select',
+      key: 'account_status'
     }, {
       title: '创建时间',
       field: 'createDatetime',

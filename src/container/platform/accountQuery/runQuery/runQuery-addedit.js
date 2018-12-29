@@ -57,7 +57,9 @@ class RunQueryAddedit extends DetailUtil {
       }
     }, {
       title: '状态',
-      field: 'status'
+      field: 'status',
+      type: 'select',
+      key: 'jour_status'
     }, {
       field: 'transDatetime',
       title: '交易时间',

@@ -32,6 +32,7 @@ class WrcAddressQuery extends React.Component {
       title: '类型',
       field: 'type',
       type: 'select',
+      key: 'address_type',
       search: true
     }, {
       title: '地址',
@@ -44,6 +45,7 @@ class WrcAddressQuery extends React.Component {
       title: '状态',
       field: 'status',
       type: 'select',
+      key: 'address_status',
       search: true
     }, {
       title: '当前余额',

@@ -35,10 +35,14 @@ class TopUpuery extends React.Component {
       field: 'channel'
     }, {
       title: '类型',
-      field: 'type'
+      field: 'type',
+      type: 'select',
+      key: 'charge_type'
     }, {
       title: '推送状态',
-      field: 'pushStatus'
+      field: 'pushStatus',
+      type: 'select',
+      key: 'push_status'
     }, {
       title: '余额',
       field: 'amountString',

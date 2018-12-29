@@ -31,13 +31,7 @@ class CurrencyAddedit extends DetailUtil {
       title: '类型',
       field: 'type',
       type: 'select',
-      required: true,
-      data: [{
-        key: '1',
-        value: '基于ETH的token币'
-      }],
-      keyName: 'key',
-      valueName: 'value'
+      key: 'coin_type'
     }, {
         title: '单位',
         field: 'unit',
@@ -78,9 +72,11 @@ class CurrencyAddedit extends DetailUtil {
       },
       required: true
     }, {
-        title: '状态',
-        field: 'status',
-        hidden: this.add || this.edit
+      title: '状态',
+      field: 'status',
+      type: 'select',
+      key: 'coin_status',
+      hidden: this.add || this.edit
     }, {
       title: 'UI序号',
       field: 'orderNo',

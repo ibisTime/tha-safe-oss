@@ -49,8 +49,10 @@ class RunQuery extends React.Component {
           return moneyFormat(v, '', data.currency);
         }
     }, {
-        title: '状态',
-        field: 'status'
+      title: '状态',
+      field: 'status',
+      type: 'select',
+      key: 'jour_status'
     }, {
         field: 'transDatetime',
         title: '交易时间',

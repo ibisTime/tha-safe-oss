@@ -27,7 +27,9 @@ class SummarizeQueryAddedit extends DetailUtil {
       field: 'currency'
     }, {
       title: '币种类型',
-      field: 'coinType'
+      field: 'coinType',
+      type: 'select',
+      key: 'coin_type'
     }, {
       title: '矿工费',
       field: 'txFee',
@@ -36,7 +38,9 @@ class SummarizeQueryAddedit extends DetailUtil {
       }
     }, {
       title: '状态',
-      field: 'status'
+      field: 'status',
+      type: 'select',
+      key: 'collect_status'
     }, {
       title: '关联订单号',
       field: 'refNo'
@@ -86,7 +90,9 @@ class SummarizeQueryAddedit extends DetailUtil {
           }
         }, {
           title: '状态',
-          field: 'status'
+          field: 'status',
+          type: 'select',
+          key: 'supply_status'
         }, {
           title: '补给时间',
           field: 'createDatetime',

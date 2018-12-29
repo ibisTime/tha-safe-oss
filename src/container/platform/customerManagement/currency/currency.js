@@ -41,6 +41,8 @@ class Currency extends React.Component {
     }, {
       title: '类型',
       field: 'type',
+      type: 'select',
+      key: 'coin_type',
       search: true
     }, {
         title: '单位',
@@ -52,8 +54,10 @@ class Currency extends React.Component {
         return moneyFormat(v, '', data.symbol);
       }
     }, {
-        title: '状态',
-        field: 'status'
+      title: '状态',
+      field: 'status',
+      type: 'select',
+      key: 'coin_status'
     }, {
       title: '序号',
       field: 'orderNo'

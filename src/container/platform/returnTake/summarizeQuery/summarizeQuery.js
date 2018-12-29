@@ -41,7 +41,9 @@ class SummarizeQuery extends React.Component {
       field: 'currency'
     }, {
       title: '状态',
-      field: 'status'
+      field: 'status',
+      type: 'select',
+      key: 'collect_status'
     }, {
       title: '归集时间',
       field: 'confirmDatetime',

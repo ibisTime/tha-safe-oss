@@ -40,7 +40,9 @@ class CustomerManagement extends React.Component {
       field: 'chargerMobile'
     }, {
       title: '状态',
-      field: 'status'
+      field: 'status',
+      type: 'select',
+      key: 'company_status'
     }, {
       title: '备注',
       field: 'remark'

@@ -26,12 +26,6 @@ class DependingQueryAddedit extends DetailUtil {
       title: '币种',
       field: 'currency'
     }, {
-      title: '类型',
-      field: 'type'
-    }, {
-      title: '业务类型',
-      field: 'bizType'
-    }, {
       title: '渠道',
       field: 'channel'
     }, {
@@ -39,7 +33,9 @@ class DependingQueryAddedit extends DetailUtil {
       field: 'payCardInfo'
     }, {
       title: '推送状态',
-      field: 'pushStatus'
+      field: 'pushStatus',
+      type: 'select',
+      key: 'push_status'
     }, {
       title: '推送次数',
       field: 'pushTimes'

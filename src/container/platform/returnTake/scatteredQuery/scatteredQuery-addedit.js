@@ -39,7 +39,9 @@ class ScatteredQueryAddedit extends DetailUtil {
       field: 'currency'
     }, {
       title: '状态',
-      field: 'status'
+      field: 'status',
+      type: 'select',
+      key: 'withdraw_status'
     }, {
       title: '散取地址',
       field: 'payUser'
@@ -62,7 +64,9 @@ class ScatteredQueryAddedit extends DetailUtil {
       type: 'datetime'
     }, {
       title: '推送状态',
-      field: 'pushStatus'
+      field: 'pushStatus',
+      type: 'select',
+      key: 'push_status'
     }, {
       title: '推送送次数',
       field: 'pushTimes'

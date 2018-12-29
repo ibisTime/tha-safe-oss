@@ -1,6 +1,7 @@
 // 散取查询
 
 import React from 'react';
+import fetch from 'common/js/fetch';
 import {
   setTableData,
   setPagination,
@@ -12,7 +13,7 @@ import {
   setSearchData
 } from '@redux/platform/returnTake/scatteredQuery';
 import { listWrapper } from 'common/js/build-list';
-import { showWarnMsg, moneyFormat } from 'common/js/util';
+import { showWarnMsg, moneyFormat, showMsgfirm } from 'common/js/util';
 
 @listWrapper(
   state => ({
@@ -45,7 +46,9 @@ class ScatteredQuery extends React.Component {
       field: 'currency'
     }, {
       title: '状态',
-      field: 'status'
+      field: 'status',
+      type: 'select',
+      key: 'withdraw_status'
     }, {
       title: '到账时间',
       field: 'payDatetime',
@@ -60,12 +63,29 @@ class ScatteredQuery extends React.Component {
       pageCode: 802755,
       btnEvent: {
         moneyRedio: (keys, items) => {
+          console.log(keys[0], items);
+          function gbScatterFn() {
+            fetch('802750', {
+              code: keys[0]
+            }).then(data => {
+              if(data) {
+                showWarnMsg('操作成功');
+                setTimeout(() => {
+                  window.location.reload();
+                }, 1500);
+              }
+            });
+          }
           if (!keys || !keys.length) {
               showWarnMsg('请选择记录');
           } else if (keys.length > 1) {
               showWarnMsg('请选择一条记录');
           }else {
-            this.props.history.push(`/returnTake/scatteredQuery/moneyRedio?code=${keys[0]}&v=1`);
+            if(items[0].status === '3') {
+              showMsgfirm('primary', '重新广播', '确定重新发起广播？', gbScatterFn);
+            }else {
+              showWarnMsg('该状态下不可发起广播');
+            }
           }
         }
       }

@@ -24,10 +24,11 @@ import { listWrapper } from 'common/js/build-list';
 class BtcAddressQuery extends React.Component {
   render() {
     const fields = [{
-        title: '类型',
-        field: 'type',
-        type: 'select',
-        search: true
+      title: '类型',
+      field: 'type',
+      type: 'select',
+      key: 'address_type',
+      search: true
     }, {
       title: '地址',
       field: 'address'
@@ -36,9 +37,11 @@ class BtcAddressQuery extends React.Component {
       field: 'createDatetime',
       type: 'datetime'
     }, {
-        title: '状态',
-        field: 'status',
-        search: true
+      title: '状态',
+      field: 'status',
+      type: 'select',
+      key: 'address_status',
+      search: true
     }, {
       title: '当前余额',
       field: 'btcBalance',

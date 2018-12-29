@@ -6,7 +6,7 @@ import fetch from 'common/js/fetch';
  * @param bizType
  */
 
-export function getDictList({ parentKey, companyCode, bizType = 660919 }) {
+export function getDictList({ parentKey, companyCode, bizType = 660906 }) {
   if (getDictList[parentKey]) {
     return Promise.resolve(getDictList[parentKey]);
   }
@@ -22,14 +22,14 @@ export function getDictList({ parentKey, companyCode, bizType = 660919 }) {
  * @param key
  * @param bizType
  */
-export function getSystormParam({ key, bizType = 630047 }) {
-    if (getSystormParam[key]) {
-        return Promise.resolve(getSystormParam[key]);
+export function getSystormParam({ parentKey, bizType = 660919 }) {
+    if (getSystormParam[parentKey]) {
+        return Promise.resolve(getSystormParam[parentKey]);
     }
     return fetch(bizType, {
-        key
+      parentKey
     }).then(data => {
-        getSystormParam[key] = data;
+        getSystormParam[parentKey] = data;
         return data;
     });
 }

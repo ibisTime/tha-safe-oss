@@ -34,11 +34,10 @@ class DependingQuery extends React.Component {
       title: '渠道',
       field: 'channel'
     }, {
-      title: '类型',
-      field: 'type'
-    }, {
       title: '推送状态',
-      field: 'pushStatus'
+      field: 'pushStatus',
+      type: 'select',
+      key: 'push_status'
     }, {
       title: '余额',
       field: 'amountString',

@@ -27,7 +27,9 @@ class TopUpueryAddedit extends DetailUtil {
       field: 'currency'
     }, {
       title: '类型',
-      field: 'type'
+      field: 'type',
+      type: 'select',
+      key: 'charge_type'
     }, {
       title: '业务类型',
       field: 'bizType'
@@ -39,7 +41,9 @@ class TopUpueryAddedit extends DetailUtil {
       field: 'payCardInfo'
     }, {
       title: '推送状态',
-      field: 'pushStatus'
+      field: 'pushStatus',
+      type: 'select',
+      key: 'push_status'
     }, {
       title: '推送次数',
       field: 'pushTimes'

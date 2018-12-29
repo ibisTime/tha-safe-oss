@@ -29,10 +29,11 @@ class AddressQuery extends React.Component {
       title: '公司编号',
       field: 'companyCode'
     }, {
-        title: '类型',
-        field: 'type',
-        type: 'select',
-        search: true
+      title: '类型',
+      field: 'type',
+      type: 'select',
+      key: 'address_type',
+      search: true
     }, {
       title: '地址',
       field: 'address'
@@ -41,10 +42,11 @@ class AddressQuery extends React.Component {
       field: 'createDatetime',
       type: 'datetime'
     }, {
-        title: '状态',
-        field: 'status',
-        type: 'select',
-        search: true
+      title: '状态',
+      field: 'status',
+      type: 'select',
+      key: 'address_status',
+      search: true
     }, {
       title: '当前余额',
       field: 'balance',
