@@ -24,23 +24,29 @@ import { listWrapper } from 'common/js/build-list';
 class Rules extends React.Component {
   render() {
     const fields = [{
+      field: 'companyCode',
       title: '公司编号',
-      field: 'name',
       search: true
     }, {
-        title: '规则名称',
-        field: 'code'
+      field: 'remark',
+      title: '参数名',
+      search: true
     }, {
-      title: '规则分类',
-      field: 'url'
+      field: 'cvalue',
+      title: '参数值'
     }, {
-      title: '数值',
-      field: 'url'
-    }, {
-      title: '备注',
-      field: 'url'
-    }];
-    return this.props.buildList({ fields, pageCode: 805000, deleteCode: 805004 });
+        field: 'updateDatetime',
+        title: '最近修改时间',
+        type: 'datetime'
+      }];
+    return this.props.buildList({
+      fields,
+      pageCode: 660915,
+      rowKey: 'id',
+      searchParams: {
+        rule: 'rule'
+      }
+    });
   }
 }
 

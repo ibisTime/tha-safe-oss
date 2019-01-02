@@ -14,12 +14,12 @@ class HisRunqueryAddedit extends DetailUtil {
   }
   render() {
     const fields = [{
+      title: '公司编号',
+      field: 'companyCode'
+    }, {
       title: '流水编号',
       field: 'code',
       search: true
-    }, {
-      title: '公司编号',
-      field: 'companyCode'
     }, {
       title: '账户编号',
       field: 'accountNumber'

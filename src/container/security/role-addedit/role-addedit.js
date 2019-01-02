@@ -23,6 +23,8 @@ class RoleAddEdit extends DetailUtil {
     }, {
       title: '等级',
       field: 'level',
+      type: 'select',
+      key: 'role_level',
       required: true
     }, {
       title: '备注',

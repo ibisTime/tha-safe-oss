@@ -24,14 +24,16 @@ import { listWrapper } from 'common/js/build-list';
 class SysParam extends React.Component {
   render() {
     const fields = [{
+      field: 'companyCode',
+      title: '公司编号'
+    }, {
       field: 'remark',
       title: '参数名',
       search: true
     }, {
       field: 'cvalue',
       title: '参数值'
-    },
-    {
+    }, {
       field: 'updateDatetime',
       title: '最近修改时间',
       type: 'datetime'

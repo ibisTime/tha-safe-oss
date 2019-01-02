@@ -26,6 +26,10 @@ import { showWarnMsg, moneyFormat, showMsgfirm } from 'common/js/util';
 class ScatteredQuery extends React.Component {
   render() {
     const fields = [{
+      title: '公司编号',
+      field: 'companyCode',
+      search: true
+    }, {
       title: '订单编号',
       field: 'code',
       search: true
@@ -53,10 +57,6 @@ class ScatteredQuery extends React.Component {
       title: '到账时间',
       field: 'payDatetime',
       type: 'datetime'
-    }, {
-      title: '公司编号',
-      field: 'companyCode',
-      search: true
     }];
     return this.props.buildList({
       fields,

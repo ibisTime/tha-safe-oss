@@ -13,11 +13,11 @@ class AccountQueryAddedit extends DetailUtil {
   }
   render() {
     const fields = [{
-      title: '调用者平台ID',
-      field: 'userId'
-    }, {
       title: '公司编号',
       field: 'companyCode'
+    }, {
+      title: '调用者平台ID',
+      field: 'userId'
     }, {
       title: '账号',
       field: 'accountNumber'

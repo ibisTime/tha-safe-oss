@@ -25,6 +25,10 @@ import { moneyFormat } from 'common/js/util';
 class DependingQuery extends React.Component {
   render() {
     const fields = [{
+      title: '公司编号',
+      field: 'companyCode',
+      search: true
+    }, {
       title: '账号',
       field: 'accountNumber'
     }, {
@@ -44,10 +48,6 @@ class DependingQuery extends React.Component {
       render(v, data) {
         return moneyFormat(v, '', data.currency);
       }
-    }, {
-      title: '公司编号',
-      field: 'companyCode',
-      search: true
     }];
     return this.props.buildList({
       fields,

@@ -17,6 +17,9 @@ class CustomerManagementAddedit extends DetailUtil {
       field: 'updater',
       hidden: true
     }, {
+      title: '公司编号',
+      field: 'code'
+    }, {
       title: '公司名称',
       field: 'name'
     }, {

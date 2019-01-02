@@ -14,6 +14,9 @@ class SummarizeQueryAddedit extends DetailUtil {
   }
   render() {
     const fields = [{
+      title: '公司编号',
+      field: 'companyCode'
+    }, {
       title: '订单编号',
       field: 'code'
     }, {
@@ -57,9 +60,6 @@ class SummarizeQueryAddedit extends DetailUtil {
     }, {
       title: '交易hash',
       field: 'txHash'
-    }, {
-      title: '公司编号',
-      field: 'companyCode'
     }, {
       title: '补给订单',
       field: 'supplyList',

@@ -27,6 +27,12 @@ class Role extends React.Component {
       field: 'name',
       search: true
     }, {
+      title: '等级',
+      field: 'level',
+      type: 'select',
+      key: 'role_level',
+      search: true
+    }, {
       title: '最近更新人',
       field: 'updater'
     }, {

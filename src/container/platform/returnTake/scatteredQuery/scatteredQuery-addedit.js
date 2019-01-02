@@ -14,6 +14,9 @@ class ScatteredQueryAddedit extends DetailUtil {
   }
   render() {
     const fields = [{
+      title: '公司编号',
+      field: 'companyCode'
+    }, {
       title: '账户编号',
       field: 'accountNumber'
     }, {
@@ -70,9 +73,6 @@ class ScatteredQueryAddedit extends DetailUtil {
     }, {
       title: '推送送次数',
       field: 'pushTimes'
-    }, {
-      title: '公司编号',
-      field: 'companyCode'
     }, {
       title: '备注',
       field: 'remark'
