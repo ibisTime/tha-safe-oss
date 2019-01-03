@@ -5,7 +5,7 @@ import {connect} from 'react-redux';
 import {login} from '@redux/user';
 import './login.css';
 import loginLeft from '../../images/login-left.png';
-import loginphot from '../../images/login.png';
+import loginphot from '../../images/wallt.png';
 
 const FormItem = Form.Item;
 
@@ -21,7 +21,7 @@ class Login extends React.Component {
                 this.props.login(values);
             }
         });
-    }
+    };
 
     render() {
         const {getFieldDecorator} = this.props.form;
