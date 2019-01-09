@@ -734,8 +734,10 @@ export function moneyFormat(money, format, coin, isRe = false) {
     let flag = false;// 是否是负数
     if (isNaN(money)) {
         return '-';
+    } else if(money === 0) {
+        return 0;
     } else {
-        Number(money);
+      Number(money);
     }
     if (money < 0) {
         money = -1 * money;

@@ -16,30 +16,24 @@ class RunQueryAddedit extends DetailUtil {
       title: '公司编号',
       field: 'companyCode'
     }, {
+      title: '账户编号',
+      field: 'accountNumber'
+    }, {
       title: '流水编号',
       field: 'code',
       search: true
     }, {
-      title: '账户编号',
-      field: 'accountNumber'
+      title: '商户订单号',
+      field: 'refOrderCode'
     }, {
       title: '商户流水号',
       field: 'merchantJourCode'
     }, {
-      title: '交易序号',
-      field: 'transOrderNo'
-    }, {
-      title: '上一条流水编号',
+      title: '上一条商户流水编号',
       field: 'prevJourCode'
     }, {
-      title: '商户订单号',
-      field: 'refOrderCode'
-    }, {
-      title: '对账人',
-      field: 'workUser'
-    }, {
-      title: '调账人',
-      field: 'adjustUser'
+      title: '交易序号',
+      field: 'transOrderNo'
     }, {
       title: '币种',
       field: 'currency'
@@ -52,7 +46,7 @@ class RunQueryAddedit extends DetailUtil {
     }, {
       title: '变动金额',
       field: 'transAmountString',
-      render(v, data) {
+      formatter(v, data) {
         return moneyFormat(v, '', data.currency);
       }
     }, {
@@ -65,20 +59,26 @@ class RunQueryAddedit extends DetailUtil {
       title: '交易时间',
       type: 'datetime'
     }, {
-      field: 'workDatetime',
-      title: '对账时间',
-      type: 'datetime'
-    }, {
-      field: 'adjustDatetime',
-      title: '调账时间',
-      type: 'datetime'
-    }, {
       field: 'importDatetime',
       title: '导入时间',
       type: 'datetime'
     }, {
+      title: '对账人',
+      field: 'workUser'
+    }, {
+      field: 'workDatetime',
+      title: '对账时间',
+      type: 'datetime'
+    }, {
       title: '对账说明',
       field: 'workNote'
+    }, {
+      title: '调账人',
+      field: 'adjustUser'
+    }, {
+      field: 'adjustDatetime',
+      title: '调账时间',
+      type: 'datetime'
     }, {
       title: '调账说明',
       field: 'adjustNote'

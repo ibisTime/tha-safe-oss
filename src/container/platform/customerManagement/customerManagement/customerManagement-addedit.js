@@ -18,16 +18,21 @@ class CustomerManagementAddedit extends DetailUtil {
       hidden: true
     }, {
       title: '公司编号',
-      field: 'code'
+      field: 'code',
+      required: true,
+      readonly: this.code
     }, {
       title: '公司名称',
-      field: 'name'
+      field: 'name',
+      required: true
     }, {
       title: '公司负责人',
-      field: 'charger'
+      field: 'charger',
+      required: true
     }, {
       title: '联系方式',
-      field: 'chargerMobile'
+      field: 'chargerMobile',
+      required: true
     }, {
       title: '备注',
       field: 'remark'
@@ -38,7 +43,11 @@ class CustomerManagementAddedit extends DetailUtil {
       view: this.view,
       detailCode: '802061',
       editCode: '802051',
-      addCode: '802050'
+      addCode: '802050',
+      beforeSubmit: (data) => {
+        data.companyCode = data.code;
+        return data;
+      }
     });
   }
 }

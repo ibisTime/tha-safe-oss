@@ -13,7 +13,7 @@ export default function fetch(code, param = {}, type) {
     token: cookies.get('token') || '',
     ...param
   };
-  if(type === 'system') {
+  if(type === 'system' && !param.companyCode) {
     data.companyCode = SYSTEM_CODE;
   }
 
