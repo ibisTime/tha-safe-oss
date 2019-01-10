@@ -34,7 +34,13 @@ class ScatteredQuery extends React.Component {
       field: 'code',
       search: true
     }, {
-      title: '金额',
+      title: '取现地址',
+      field: 'payCardNo'
+    }, {
+      title: '散取地址',
+      field: 'payUser'
+    }, {
+      title: '取现金额',
       field: 'amountString',
       render(v, data) {
         return moneyFormat(v, '', data.currency);

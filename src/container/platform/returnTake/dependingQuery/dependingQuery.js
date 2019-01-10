@@ -36,7 +36,9 @@ class DependingQuery extends React.Component {
       field: 'currency'
     }, {
       title: '渠道',
-      field: 'channel'
+      field: 'channel',
+      type: 'select',
+      key: 'charge_channel'
     }, {
       title: '推送状态',
       field: 'pushStatus',

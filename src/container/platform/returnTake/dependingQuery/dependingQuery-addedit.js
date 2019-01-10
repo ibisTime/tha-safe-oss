@@ -27,7 +27,7 @@ class DependingQueryAddedit extends DetailUtil {
       field: 'currency'
     }, {
       title: '渠道',
-      field: 'channel'
+      field: 'charge_channel'
     }, {
       title: '公链',
       field: 'payCardInfo'

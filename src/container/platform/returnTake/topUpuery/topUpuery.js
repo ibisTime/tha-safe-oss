@@ -26,7 +26,8 @@ class TopUpuery extends React.Component {
   render() {
     const fields = [{
       title: '公司编号',
-      field: 'companyCode'
+      field: 'companyCode',
+      search: true
     }, {
         title: '账号',
         field: 'accountNumber'
@@ -35,7 +36,9 @@ class TopUpuery extends React.Component {
       field: 'currency'
     }, {
       title: '渠道',
-      field: 'channel'
+      field: 'channel',
+      type: 'select',
+      key: 'charge_channel'
     }, {
       title: '类型',
       field: 'type',

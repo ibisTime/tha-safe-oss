@@ -35,7 +35,7 @@ class TopUpueryAddedit extends DetailUtil {
       field: 'bizType'
     }, {
       title: '渠道',
-      field: 'channel'
+      field: 'charge_channel'
     }, {
       title: '公链',
       field: 'payCardInfo'
