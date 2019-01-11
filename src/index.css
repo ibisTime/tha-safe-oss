@@ -126,3 +126,8 @@ li {
 .ant-menu-horizontal {
   white-space: normal !important;
 }
+.ant-table-tbody > tr > td {
+  max-width: 300px;
+  -ms-word-wrap: break-word;
+  word-wrap: break-word;
+}

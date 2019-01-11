@@ -13,7 +13,12 @@ import {
 } from '@redux/platform/returnTake/topUpuery';
 import { listWrapper } from 'common/js/build-list';
 import { moneyFormat } from 'common/js/util';
-
+import { getCoinList } from 'api/coin';
+let coinData = [];
+getCoinList().then(data => {
+  coinData = data;
+  console.log(data);
+});
 @listWrapper(
   state => ({
     ...state.topUpuery,
@@ -29,11 +34,19 @@ class TopUpuery extends React.Component {
       field: 'companyCode',
       search: true
     }, {
+      title: '用户编号',
+      field: 'userId'
+    }, {
         title: '账号',
         field: 'accountNumber'
     }, {
       title: '币种',
-      field: 'currency'
+      field: 'currency',
+      type: 'select',
+      data: coinData,
+      keyName: 'symbol',
+      valueName: '{{symbol.DATA}}-{{cname.DATA}}',
+      search: true
     }, {
       title: '渠道',
       field: 'channel',
@@ -43,7 +56,8 @@ class TopUpuery extends React.Component {
       title: '类型',
       field: 'type',
       type: 'select',
-      key: 'charge_type'
+      key: 'charge_type',
+      search: true
     }, {
       title: '推送状态',
       field: 'pushStatus',

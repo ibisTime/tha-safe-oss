@@ -104,10 +104,6 @@ const ROUTES = [
     {
         path: '/usdAddressQuery/usdRunQuery', component: asyncComponent(() => import('container/platform/addressQuery/usdAddressQuery/usdRunQuery'))
     },
-    // 平台后台--流水查询-usd-详情
-    {
-      path: '/usdAddressQuery/usdAddressQuery/addedit', component: asyncComponent(() => import('container/platform/addressQuery/usdAddressQuery/usdAddressQuery-addedit'))
-    },
     // 平台后台--地址查询-wan
     {
         path: '/wanAddressQuery/wanAddressQuery', component: asyncComponent(() => import('container/platform/addressQuery/wanAddressQuery/wanAddressQuery'))

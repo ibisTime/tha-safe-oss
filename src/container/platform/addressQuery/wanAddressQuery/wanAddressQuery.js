@@ -48,7 +48,7 @@ class WanAddressQuery extends React.Component {
       search: true
     }, {
       title: '当前余额',
-      field: 'wanBalance',
+      field: 'balanceString',
       coin: 'WAN',
       amount: true
     }, {

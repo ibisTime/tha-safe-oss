@@ -27,7 +27,9 @@ class DependingQueryAddedit extends DetailUtil {
       field: 'currency'
     }, {
       title: '渠道',
-      field: 'charge_channel'
+      field: 'channel',
+      type: 'select',
+      key: 'charge_channel'
     }, {
       title: '公链',
       field: 'payCardInfo'
@@ -50,7 +52,8 @@ class DependingQueryAddedit extends DetailUtil {
       }
     }, {
       title: '充值时间',
-      field: 'createDatetime'
+      field: 'createDatetime',
+      type: 'datetime'
     }, {
       title: '业务说明',
       field: 'bizNote'
