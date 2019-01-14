@@ -13,7 +13,12 @@ import {
 } from '@redux/platform/accountQuery/zdRunQuery';
 import { listWrapper } from 'common/js/build-list';
 import { getQueryString, showWarnMsg, dateTimeFormat, moneyFormat } from 'common/js/util';
+import fetch from 'common/js/fetch';
 
+let comList = []; // 公司编号列表查
+fetch(802062).then(data => {
+  comList = data;
+});
 @listWrapper(
   state => ({
     ...state.zdRunQuery,
@@ -28,6 +33,10 @@ class ZdRunQuery extends React.Component {
     const fields = [{
       title: '公司编号',
       field: 'companyCode',
+      data: comList,
+      keyName: 'code',
+      valueName: 'code',
+      type: 'select',
       search: true
     }, {
       title: '账户编号',

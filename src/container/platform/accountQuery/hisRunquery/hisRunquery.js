@@ -13,6 +13,12 @@ import {
 } from '@redux/platform/accountQuery/hisRunquery';
 import { listWrapper } from 'common/js/build-list';
 import { dateTimeFormat, moneyFormat } from 'common/js/util';
+import fetch from 'common/js/fetch';
+
+let comList = []; // 公司编号列表查
+fetch(802062).then(data => {
+  comList = data;
+});
 
 @listWrapper(
   state => ({
@@ -27,6 +33,10 @@ class HisRunquery extends React.Component {
     const fields = [{
       title: '公司编号',
       field: 'companyCode',
+      data: comList,
+      keyName: 'code',
+      valueName: 'code',
+      type: 'select',
       search: true
     }, {
       title: '账户编号',

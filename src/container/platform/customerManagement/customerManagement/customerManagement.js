@@ -15,6 +15,11 @@ import {
 import { listWrapper } from 'common/js/build-list';
 import { showWarnMsg, showMsgfirm, getUserName } from 'common/js/util';
 
+let comList = []; // 公司编号列表查
+fetch(802062).then(data => {
+  comList = data;
+});
+
 @listWrapper(
   state => ({
     ...state.customerManagement,
@@ -28,7 +33,14 @@ class CustomerManagement extends React.Component {
     const fields = [{
       title: '公司编号',
       field: 'code',
-      search: true
+      data: comList,
+      keyName: 'code',
+      valueName: 'code',
+      type: 'select',
+      search: true,
+      render(v) {
+        return v;
+      }
     }, {
         title: '公司名称',
         field: 'name'

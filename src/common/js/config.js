@@ -14,6 +14,11 @@ export const REPORT_URL = 'http://boss.sl.hichengdai.com/report.html';
 // 系统userid
 export const SYS_USER = 'SYS_USER';
 
+// BTC第三方查询url--测试
+export const CS_BTC_URL = 'https://testnet.blockexplorer.com/address/';
+// BTC第三方查询url--正式
+export const ZS_BTC_URL = 'https://blockexplorer.com/address/';
+
 export const formItemLayout = {
   labelCol: {
     xs: {

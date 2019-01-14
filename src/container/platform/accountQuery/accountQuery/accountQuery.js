@@ -13,6 +13,17 @@ import {
 } from '@redux/platform/accountQuery/accountQuery';
 import { listWrapper } from 'common/js/build-list';
 import { moneyFormat, showWarnMsg } from 'common/js/util';
+import { getCoinList } from 'api/coin';
+import fetch from 'common/js/fetch';
+
+let comList = []; // 公司编号列表查
+fetch(802062).then(data => {
+  comList = data;
+});
+let coinData = [];
+getCoinList().then(data => {
+  coinData = data;
+});
 
 @listWrapper(
   state => ({
@@ -27,18 +38,34 @@ class AccountQuery extends React.Component {
     const fields = [{
       title: '公司编号',
       field: 'companyCode',
-      search: true
+      search: true,
+      type: 'select',
+      data: comList,
+      valueName: 'code',
+      keyName: 'code',
+      render(v) {
+        return v;
+      }
+    }, {
+      title: '用户编号',
+      field: 'userId'
     }, {
         title: '账号',
         field: 'accountNumber'
     }, {
       title: '币种',
-      field: 'currency'
+      field: 'currency',
+      type: 'select',
+      data: coinData,
+      keyName: 'symbol',
+      valueName: '{{symbol.DATA}}-{{cname.DATA}}',
+      search: true
     }, {
       title: '类型',
       field: 'type',
       type: 'select',
-      key: 'account_type'
+      key: 'account_type',
+      search: true
     }, {
       title: '余额',
       field: 'amount',

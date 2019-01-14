@@ -135,14 +135,14 @@ export default class CSearchSelect extends React.Component {
         if (this.props.dictData && this.props.dict) {
           this.props.dict.forEach(d => {
             let dList = this.props.dictData[d[1]];
-            data.list.forEach(o => {
-              for(let i = 0; i < dList.length; i++) {
-                if (dList[i].dkey === o[d[0]]) {
-                  o[d[0] + 'Name'] = dList[i].dvalue;
-                  break;
+              data.list.forEach(o => {
+                for(let i = 0; i < dList.length; i++) {
+                  if (dList[i].dkey === o[d[0]]) {
+                    o[d[0] + 'Name'] = dList[i].dvalue;
+                    break;
+                  }
                 }
-              }
-            });
+              });
           });
         }
         this.setState({

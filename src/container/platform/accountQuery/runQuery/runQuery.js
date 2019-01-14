@@ -13,6 +13,12 @@ import {
 } from '@redux/platform/accountQuery/runQuery';
 import { listWrapper } from 'common/js/build-list';
 import { moneyFormat, dateTimeFormat } from 'common/js/util';
+import fetch from 'common/js/fetch';
+
+let comList = []; // 公司编号列表查
+fetch(802062).then(data => {
+  comList = data;
+});
 
 @listWrapper(
   state => ({
@@ -27,6 +33,10 @@ class RunQuery extends React.Component {
     const fields = [{
       title: '公司编号',
       field: 'companyCode',
+      data: comList,
+      keyName: 'code',
+      valueName: 'code',
+      type: 'select',
       search: true
     }, {
       title: '账户编号',

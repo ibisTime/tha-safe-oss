@@ -12,6 +12,12 @@ import {
   setSearchData
 } from '@redux/platform/customerManagement/rules';
 import { listWrapper } from 'common/js/build-list';
+import fetch from 'common/js/fetch';
+
+let comList = []; // 公司编号列表查
+fetch(802062).then(data => {
+  comList = data;
+});
 
 @listWrapper(
   state => ({
@@ -26,7 +32,14 @@ class Rules extends React.Component {
     const fields = [{
       field: 'companyCode',
       title: '公司编号',
-      search: true
+      data: comList,
+      keyName: 'code',
+      valueName: 'code',
+      type: 'select',
+      search: true,
+      render(v) {
+        return v;
+      }
     }, {
       field: 'remark',
       title: '参数名',

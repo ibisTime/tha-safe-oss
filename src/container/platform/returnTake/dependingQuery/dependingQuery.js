@@ -13,6 +13,12 @@ import {
 } from '@redux/platform/returnTake/dependingQuery';
 import { listWrapper } from 'common/js/build-list';
 import { moneyFormat } from 'common/js/util';
+import fetch from 'common/js/fetch';
+
+let comList = []; // 公司编号列表查
+fetch(802062).then(data => {
+  comList = data;
+});
 
 @listWrapper(
   state => ({
@@ -27,6 +33,13 @@ class DependingQuery extends React.Component {
     const fields = [{
       title: '公司编号',
       field: 'companyCode',
+      type: 'select',
+      data: comList,
+      keyName: 'code',
+      valueName: 'code',
+      render: (v) => {
+        return v;
+      },
       search: true
     }, {
       title: '账号',
@@ -34,6 +47,12 @@ class DependingQuery extends React.Component {
     }, {
       title: '币种',
       field: 'currency'
+    }, {
+      title: '打币地址',
+      field: 'payCardNo'
+    }, {
+      title: '充值地址',
+      field: 'changeAddress'
     }, {
       title: '渠道',
       field: 'channel',

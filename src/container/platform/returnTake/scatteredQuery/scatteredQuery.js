@@ -15,6 +15,11 @@ import {
 import { listWrapper } from 'common/js/build-list';
 import { showWarnMsg, moneyFormat, showMsgfirm } from 'common/js/util';
 
+let comList = []; // 公司编号列表查
+fetch(802062).then(data => {
+  comList = data;
+});
+
 @listWrapper(
   state => ({
     ...state.scatteredQuery,
@@ -28,6 +33,13 @@ class ScatteredQuery extends React.Component {
     const fields = [{
       title: '公司编号',
       field: 'companyCode',
+      type: 'select',
+      data: comList,
+      keyName: 'code',
+      valueName: 'code',
+      render: (v) => {
+        return v;
+      },
       search: true
     }, {
       title: '订单编号',

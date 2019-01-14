@@ -14,10 +14,15 @@ import {
 import { listWrapper } from 'common/js/build-list';
 import { moneyFormat } from 'common/js/util';
 import { getCoinList } from 'api/coin';
+import fetch from 'common/js/fetch';
+
+let comList = []; // 公司编号列表查
+fetch(802062).then(data => {
+  comList = data;
+});
 let coinData = [];
 getCoinList().then(data => {
   coinData = data;
-  console.log(data);
 });
 @listWrapper(
   state => ({
@@ -32,10 +37,14 @@ class TopUpuery extends React.Component {
     const fields = [{
       title: '公司编号',
       field: 'companyCode',
-      search: true
-    }, {
-      title: '用户编号',
-      field: 'userId'
+      data: comList,
+      keyName: 'code',
+      valueName: 'code',
+      type: 'select',
+      search: true,
+      render(v) {
+        return v;
+      }
     }, {
         title: '账号',
         field: 'accountNumber'
@@ -47,6 +56,12 @@ class TopUpuery extends React.Component {
       keyName: 'symbol',
       valueName: '{{symbol.DATA}}-{{cname.DATA}}',
       search: true
+    }, {
+      title: '打币地址',
+      field: 'payCardNo'
+    }, {
+      title: '充值地址',
+      field: 'changeAddress'
     }, {
       title: '渠道',
       field: 'channel',
