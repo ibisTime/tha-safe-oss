@@ -58,6 +58,9 @@ class EthAddressQuery extends React.Component {
     return this.props.buildList({
       fields,
       pageCode: 802105,
+      searchParams: {
+        currency: 'ETH'
+      },
       btnEvent: {
         runQuery: (keys, items) => {
           if (!keys || !keys.length) {
