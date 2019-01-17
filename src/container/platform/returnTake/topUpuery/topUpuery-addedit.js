@@ -26,6 +26,12 @@ class TopUpueryAddedit extends DetailUtil {
       title: '币种',
       field: 'currency'
     }, {
+      title: '打币地址',
+      field: 'payCardNo'
+    }, {
+      title: '充值地址',
+      field: 'chargeAddress'
+    }, {
       title: '类型',
       field: 'type',
       type: 'select',
@@ -60,7 +66,8 @@ class TopUpueryAddedit extends DetailUtil {
       }
     }, {
       title: '充值时间',
-      field: 'createDatetime'
+      field: 'createDatetime',
+      type: 'datetime'
     }, {
       title: '业务说明',
       field: 'bizNote'

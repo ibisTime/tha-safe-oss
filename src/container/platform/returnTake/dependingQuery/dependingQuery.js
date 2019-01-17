@@ -52,7 +52,7 @@ class DependingQuery extends React.Component {
       field: 'payCardNo'
     }, {
       title: '充值地址',
-      field: 'changeAddress'
+      field: 'chargeAddress'
     }, {
       title: '渠道',
       field: 'channel',

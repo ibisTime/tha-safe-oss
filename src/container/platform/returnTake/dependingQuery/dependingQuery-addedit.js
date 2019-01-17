@@ -26,6 +26,12 @@ class DependingQueryAddedit extends DetailUtil {
       title: '币种',
       field: 'currency'
     }, {
+      title: '打币地址',
+      field: 'payCardNo'
+    }, {
+      title: '充值地址',
+      field: 'chargeAddress'
+    }, {
       title: '渠道',
       field: 'channel',
       type: 'select',
