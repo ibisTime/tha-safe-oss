@@ -68,7 +68,8 @@ class BtcAddressQuery extends React.Component {
           } else if (keys.length > 1) {
             showWarnMsg('请选择一条记录');
           } else{
-            window.open(CS_BTC_URL + items[0].address, '_blank');
+            window.open(CS_BTC_URL + items[0].address, '_blank'); // 测试
+            // window.open(ZS_BTC_URL + items[0].address, '_blank'); // 正式
           }
         }
       }, {
